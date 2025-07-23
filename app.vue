@@ -51,7 +51,7 @@
             class="bg-slate-800 rounded-xl p-4 flex items-center space-x-4 border border-slate-700"
           >
             <img
-              src="https://placehold.co/80x80/0f172a/e2e8f0?text=HSR"
+              src="https://shop.ldrescdn.com/rms/ld-space/process/img/5ba76fd6bcce49d5a3f9e97c2c64b1691737079512.webp"
               alt="Honkai Star Rail Icon"
               class="w-20 h-20 rounded-lg"
             />
@@ -66,7 +66,7 @@
               class="bg-cyan-900/30 border border-cyan-400/50 rounded-lg p-4 mb-6"
             >
               <h2 class="font-semibold text-white">
-                Select the product to top up
+                BONUS REFRESHED! 2X Oneiric Shards on First V3.2 Top-Up
               </h2>
             </div>
 
@@ -77,32 +77,53 @@
                 v-for="product in products"
                 :key="product.name"
                 :class="[
-                  'bg-slate-800 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 border-2',
+                  'bg-slate-800 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 border-2 relative overflow-hidden',
                   selectedProduct?.name === product.name
                     ? 'border-cyan-400 shadow-lg shadow-cyan-500/20'
                     : 'border-slate-700 hover:border-slate-600',
                 ]"
+                :style="{
+                  backgroundImage:
+                    'url(https://shop.ldrescdn.com/web_shop/static/sku-bg.Db9XNylV.png)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }"
                 @click="selectedProduct = product"
               >
-                <div class="relative">
-                  <img
-                    :src="product.image"
-                    :alt="product.name"
-                    class="w-full h-auto rounded-md mx-auto mb-3"
-                  />
-                  <div
-                    v-if="product.bonus"
-                    class="absolute top-1 right-1 bg-amber-400 text-slate-900 text-xs font-bold px-1.5 py-0.5 rounded-full shadow-md"
-                  >
-                    {{ product.bonus }}
+                <!-- 背景遮罩层 -->
+                <div class="absolute inset-0 bg-slate-900/60" />
+
+                <!-- 内容层 -->
+                <div class="relative z-10">
+                  <div class="relative">
+                    <!-- 固定尺寸的图片容器 -->
+                    <div
+                      class="w-full h-24 mb-3 flex items-center justify-center bg-slate-700/20 rounded-md"
+                    >
+                      <img
+                        :src="product.image"
+                        :alt="product.name"
+                        class="max-w-full max-h-full object-contain rounded-md"
+                      />
+                    </div>
+                    <div
+                      v-if="product.bonus"
+                      class="absolute top-1 right-1 bg-amber-400 text-slate-900 text-xs font-bold px-1.5 py-0.5 rounded-full shadow-md"
+                    >
+                      {{ product.bonus }}
+                    </div>
                   </div>
+                  <!-- 固定2行高度的商品名称 -->
+                  <h3
+                    class="font-semibold text-sm text-white h-10 flex items-start leading-5 mb-2"
+                  >
+                    <span class="line-clamp-2">{{ product.name }}</span>
+                  </h3>
+                  <p class="text-amber-400 font-bold mt-1">
+                    ${{ product.price }}
+                  </p>
                 </div>
-                <h3 class="font-semibold text-sm text-white truncate">
-                  {{ product.name }}
-                </h3>
-                <p class="text-amber-400 font-bold mt-1">
-                  ${{ product.price }}
-                </p>
               </div>
             </div>
           </div>
@@ -352,46 +373,116 @@ import TopUpForm from "~/components/TopUpForm.vue";
 
 const products = ref([
   {
-    name: "Oneiric Shard ×60",
-    price: "0.99",
-    image: "https://placehold.co/200x100/1e293b/amber-400?text=60",
-    bonus: "+60",
-  },
-  {
-    name: "Oneiric Shard ×300",
+    name: "[V3.4 Limited] Express Supply Pass",
     price: "4.99",
-    image: "https://placehold.co/200x100/1e293b/amber-400?text=300",
-    bonus: "+300",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/7f52f8a5ddb24281a5ebbf367d5d7e5f1747725642.webp",
+    bonus: "Limited",
   },
   {
-    name: "Oneiric Shard ×980",
-    price: "14.99",
-    image: "https://placehold.co/200x100/1e293b/amber-400?text=980",
-    bonus: "+980",
-  },
-  {
-    name: "Oneiric Shard ×1980",
-    price: "29.99",
-    image: "https://placehold.co/200x100/1e293b/amber-400?text=1980",
-    bonus: "+1980",
-  },
-  {
-    name: "Oneiric Shard ×3280",
-    price: "49.99",
-    image: "https://placehold.co/200x100/1e293b/amber-400?text=3280",
-    bonus: "+3280",
-  },
-  {
-    name: "Oneiric Shard ×6480",
+    name: "[V3.4 Limited] 6480+1600",
     price: "99.99",
-    image: "https://placehold.co/200x100/1e293b/amber-400?text=6480",
-    bonus: "+6480",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/95f839fd290e4c2894cafc84bec6c7e01745484168.webp",
+    bonus: "+1600",
   },
   {
-    name: "Express Supply Pass",
-    price: "4.99",
-    image: "https://placehold.co/200x100/1e293b/cyan-400?text=Pass",
-    bonus: null,
+    name: "Firefly|Jingliu|Blade Guarantee Bundle",
+    price: "149.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/416d6c3eb0dc429ba2cba67f8fae75ab1753085138.webp",
+    bonus: "Guarantee",
+  },
+  {
+    name: "5 Star Light Cones Bundle",
+    price: "79.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/c2cf83a0656f4d65befba95a4a0dcb0f1753085172.webp",
+    bonus: "5★",
+  },
+  {
+    name: "Spring Missive Outfit Pack",
+    price: "19.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/815d40cadc89427fa7e676b8fbd6ff531751362108.webp",
+    bonus: "Outfit",
+  },
+  {
+    name: "[Fate Limited] Saber/Archer Guarantee Bundle",
+    price: "199.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/f1d0921d8c6b456abf58a7e07d002e8b1752135114.webp",
+    bonus: "Fate",
+  },
+  {
+    name: "[Fate Limited] 5 Star Light Cones Bundle",
+    price: "89.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/2e624cae3d434abc904d7e3df4651f1f1752136908.webp",
+    bonus: "Limited",
+  },
+  {
+    name: "All-In-One bundle",
+    price: "299.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/dabf9a90b5c64035bd94ee3a48147b9b1744007618.webp",
+    bonus: "All-In-One",
+  },
+  {
+    name: "6480+1600 Oneiric Shard × 3",
+    price: "279.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/64b7579393984416b071dae5bd2c9e471753086019.webp",
+    bonus: "×3",
+  },
+  {
+    name: "6480+1600 Oneiric Shard × 5",
+    price: "449.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/783a0d50429f445593b51f490fa446111753086109.webp",
+    bonus: "×5",
+  },
+  {
+    name: "6480+1600 Oneiric Shard × 10",
+    price: "849.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/0e08889165be4b529ca621d959fa5ba41753086149.webp",
+    bonus: "×10",
+  },
+  {
+    name: "Express Supply Pass × 3",
+    price: "12.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/b275f9ea85834945881096707d8b11861745484117.webp",
+    bonus: "×3",
+  },
+  {
+    name: "Express Supply Pass × 5",
+    price: "19.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/4d06c76c356d49978eedf2470f9f19111745484146.webp",
+    bonus: "×5",
+  },
+  {
+    name: "Herta Contract: Trailblaze Aid",
+    price: "39.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/c88d741a7c57460dad26c92a4fbc3c461743415169.webp",
+    bonus: "Contract",
+  },
+  {
+    name: "Herta Contract: Fuel Refill",
+    price: "24.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/438cc1549a4a4704843f162b93cb9af91743415289.webp",
+    bonus: "Contract",
+  },
+  {
+    name: "Herta Contract: Quest Sharing",
+    price: "29.99",
+    image:
+      "https://shop.ldrescdn.com/rms/ld-space/process/img/19896eec2fa042a3af0cc8ea7e89e35f1743415305.webp",
+    bonus: "Contract",
   },
 ]);
 
@@ -661,4 +752,11 @@ const processOrder = (orderData) => {
 
 <style>
 /* Tailwind handles all styling */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>
