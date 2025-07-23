@@ -1084,14 +1084,6 @@ const products = ref([
       "https://shop.ldrescdn.com/rms/ld-space/process/img/0e08889165be4b529ca621d959fa5ba41753086149.webp",
     bonus: "×10",
   },
-
-  {
-    name: "Express Supply Pass × 5",
-    price: "19.99",
-    image:
-      "https://shop.ldrescdn.com/rms/ld-space/process/img/4d06c76c356d49978eedf2470f9f19111745484146.webp",
-    bonus: "×5",
-  },
   {
     name: "Herta Contract: Trailblaze Aid",
     price: "39.99",

@@ -71,8 +71,7 @@
     <div class="mt-8">
       <button
         @click="$emit('showOrderModal')"
-        :disabled="!selectedProduct || !uid || !selectedServer"
-        class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 disabled:from-slate-600 disabled:to-slate-700 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg text-lg transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 flex items-center justify-center space-x-2 backdrop-blur-sm border border-amber-400/30"
+        class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold py-4 rounded-lg text-lg transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 flex items-center justify-center space-x-2 backdrop-blur-sm border border-amber-400/30"
       >
         <span>Top Up Now</span>
         <Icon name="heroicons:arrow-right" class="w-6 h-6" />
