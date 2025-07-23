@@ -30,9 +30,7 @@
               <img src="/logo.png" alt="Logo" class="h-14 lg:h-20 w-auto" />
             </div>
           </div>
-          <div
-            class="flex flex-col lg:flex-row items-end lg:items-center space-y-1 lg:space-y-0 lg:space-x-4"
-          >
+          <div class="flex items-center space-x-4">
             <!-- 语言货币选择 -->
             <div class="flex items-center">
               <button
@@ -54,18 +52,7 @@
 
             <!-- 登录和订单 -->
             <div class="flex items-center space-x-2 lg:space-x-4">
-              <!-- 订单按钮 -->
-              <button
-                class="text-slate-300 flex items-center space-x-1 lg:space-x-2 hover:text-white"
-                @click="showOrderListModal = true"
-              >
-                <Icon
-                  name="heroicons:clipboard-document-list"
-                  class="h-3 w-3 lg:h-6 lg:w-6"
-                />
-                <span class="text-xs lg:text-sm font-medium">Orders</span>
-              </button>
-              <!-- 登录按钮 -->
+              <!-- 未登录时显示登录按钮 -->
               <button
                 v-if="!isLoggedIn"
                 class="flex items-center space-x-1 lg:space-x-2 text-white px-2 py-1 lg:px-3 lg:py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all duration-200 hover:shadow-lg"
@@ -85,22 +72,24 @@
                 <span>Login</span>
               </button>
 
-              <!-- 用户头像（登录后） -->
+              <!-- 已登录时显示订单按钮 -->
               <button
                 v-else
-                class="flex items-center space-x-1 lg:space-x-2 text-slate-300 hover:text-white"
-                @click="showUserMenu = !showUserMenu"
+                class="flex items-center space-x-1 lg:space-x-2 text-white px-2 py-1 lg:px-3 lg:py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all duration-200 hover:shadow-lg"
+                style="
+                  background: linear-gradient(
+                    89.92deg,
+                    rgb(34, 211, 238) 0.07%,
+                    rgb(59, 130, 246)
+                  );
+                "
+                @click="showOrderListModal = true"
               >
-                <div
-                  class="w-6 h-6 lg:w-8 lg:h-8 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full flex items-center justify-center"
-                >
-                  <span class="text-white text-xs lg:text-sm font-bold">{{
-                    userInitial
-                  }}</span>
-                </div>
-                <span class="text-xs lg:text-sm font-medium hidden lg:inline">{{
-                  userName
-                }}</span>
+                <Icon
+                  name="heroicons:clipboard-document-list"
+                  class="h-3 w-3 lg:h-5 lg:w-5"
+                />
+                <span>Orders</span>
               </button>
             </div>
           </div>
