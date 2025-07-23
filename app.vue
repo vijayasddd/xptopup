@@ -110,53 +110,88 @@
                 class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-amber-500/10 to-pink-500/10 rounded-full translate-y-12 -translate-x-12"
               ></div>
 
-              <!-- 移动端布局 -->
-              <div class="relative z-10 lg:hidden">
-                <div class="flex items-start space-x-3 mb-3">
+              <!-- 合并后的布局 - 替换原来的两个布局 -->
+              <div class="relative z-10">
+                <div
+                  class="flex items-start space-x-3 lg:space-x-4 lg:space-x-6 mb-3 lg:mb-0"
+                >
                   <img
                     src="https://shop.ldrescdn.com/rms/ld-space/process/img/5ba76fd6bcce49d5a3f9e97c2c64b1691737079512.webp"
                     alt="Honkai Star Rail Icon"
-                    class="w-[90px] h-[90px] rounded-lg border-2 border-cyan-400/50 shadow-lg"
+                    class="w-[90px] h-[90px] lg:w-20 lg:h-20 lg:w-28 lg:h-28 rounded-lg border-2 border-cyan-400/50 shadow-lg"
                   />
 
                   <div class="flex-1 min-w-0">
-                    <h1 class="text-lg font-bold text-white mb-1">
-                      Honkai: Star Rail
-                    </h1>
-                    <div class="flex items-center space-x-1 mb-2">
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-3 w-3 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-3 w-3 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-3 w-3 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-3 w-3 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-3 w-3 text-amber-400"
-                      />
-                    </div>
-                    <p
-                      class="text-xs text-cyan-400 leading-5 lg:leading-normal font-medium"
+                    <!-- 标题和星级区域 - 复用 -->
+                    <div
+                      class="flex flex-col lg:flex-row lg:items-center lg:space-x-3 mb-1 lg:mb-2"
                     >
-                      🎮 Official Direct Top-Up<br />🛡️ 100% Safe & Secure
+                      <h1
+                        class="text-lg lg:text-xl lg:text-2xl font-bold text-white mb-1 lg:mb-0"
+                      >
+                        Honkai: Star Rail
+                      </h1>
+                      <div class="flex items-center space-x-1">
+                        <Icon
+                          name="heroicons:star-solid"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                        />
+                        <Icon
+                          name="heroicons:star-solid"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                        />
+                        <Icon
+                          name="heroicons:star-solid"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                        />
+                        <Icon
+                          name="heroicons:star-solid"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                        />
+                        <Icon
+                          name="heroicons:star-solid"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- 描述文字 - 复用 -->
+                    <p
+                      class="text-xs lg:text-xs lg:text-sm text-cyan-400 leading-5 lg:leading-normal font-medium mb-2 lg:mb-3"
+                    >
+                      🎮 Official Direct Top-Up<br class="lg:hidden" /><span
+                        class="hidden lg:inline"
+                      >
+                        | </span
+                      >🛡️ 100% Safe & Secure
                     </p>
+
+                    <!-- PC端标签 - 只在PC端显示 -->
+                    <div class="hidden lg:flex lg:flex-wrap lg:gap-2 lg:gap-3">
+                      <span
+                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-green-500/20 text-green-400 text-xs lg:text-sm rounded-full border border-green-500/30"
+                      >
+                        <Icon name="heroicons:shield-check" class="h-3 w-3" />
+                        <span>By HoYoverse</span>
+                      </span>
+                      <span
+                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-blue-500/20 text-blue-400 text-xs lg:text-sm rounded-full border border-blue-500/30"
+                      >
+                        <Icon name="heroicons:bolt" class="h-3 w-3" />
+                        <span>Instant Delivery</span>
+                      </span>
+                      <span
+                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-amber-500/20 text-amber-400 text-xs lg:text-sm rounded-full border border-amber-500/30"
+                      >
+                        <Icon name="heroicons:trophy" class="h-3 w-3" />
+                        <span>Official Verified</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <!-- 移动端标签 -->
-                <div
-                  class="flex flex-nowrap lg:flex-wrap lg:gap-1.5 gap-1 whitespace-nowrap"
-                >
+                <!-- 移动端标签 - 只在移动端显示 -->
+                <div class="flex flex-nowrap lg:hidden gap-1 whitespace-nowrap">
                   <span
                     class="inline-flex items-center space-x-1 px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30"
                   >
@@ -175,73 +210,6 @@
                     <Icon name="heroicons:trophy" class="h-2.5 w-2.5" />
                     <span>Verified</span>
                   </span>
-                </div>
-              </div>
-
-              <!-- PC端布局 (保持不变) -->
-              <div
-                class="relative z-10 hidden lg:flex items-center space-x-4 lg:space-x-6"
-              >
-                <img
-                  src="https://shop.ldrescdn.com/rms/ld-space/process/img/5ba76fd6bcce49d5a3f9e97c2c64b1691737079512.webp"
-                  alt="Honkai Star Rail Icon"
-                  class="w-20 h-20 lg:w-28 lg:h-28 rounded-lg border-2 border-cyan-400/50 shadow-lg"
-                />
-
-                <div class="flex-1">
-                  <div class="flex items-center space-x-3 mb-2">
-                    <h1 class="text-xl lg:text-2xl font-bold text-white">
-                      Honkai: Star Rail
-                    </h1>
-                    <div class="flex items-center space-x-1">
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-4 w-4 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-4 w-4 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-4 w-4 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-4 w-4 text-amber-400"
-                      />
-                      <Icon
-                        name="heroicons:star-solid"
-                        class="h-4 w-4 text-amber-400"
-                      />
-                    </div>
-                  </div>
-
-                  <p class="text-xs lg:text-sm text-cyan-400 font-medium mb-3">
-                    🎮 Official Direct Top-Up | 🛡️ 100% Safe & Secure
-                  </p>
-
-                  <!-- 宣传标签 -->
-                  <div class="flex flex-wrap gap-2 lg:gap-3">
-                    <span
-                      class="inline-flex items-center space-x-1 px-3 py-1.5 bg-green-500/20 text-green-400 text-xs lg:text-sm rounded-full border border-green-500/30"
-                    >
-                      <Icon name="heroicons:shield-check" class="h-3 w-3" />
-                      <span>Ban Protection</span>
-                    </span>
-                    <span
-                      class="inline-flex items-center space-x-1 px-3 py-1.5 bg-blue-500/20 text-blue-400 text-xs lg:text-sm rounded-full border border-blue-500/30"
-                    >
-                      <Icon name="heroicons:bolt" class="h-3 w-3" />
-                      <span>Instant Delivery</span>
-                    </span>
-                    <span
-                      class="inline-flex items-center space-x-1 px-3 py-1.5 bg-amber-500/20 text-amber-400 text-xs lg:text-sm rounded-full border border-amber-500/30"
-                    >
-                      <Icon name="heroicons:trophy" class="h-3 w-3" />
-                      <span>Official Verified</span>
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -533,34 +501,6 @@
                   <a href="#" class="hover:text-cyan-400">Privacy Policy</a>
                 </li>
               </ul>
-            </div>
-            <div class="col-span-2 md:col-span-2">
-              <h4
-                class="font-bold text-white mb-2 lg:mb-3 text-sm lg:text-base"
-              >
-                Download App
-              </h4>
-              <div class="flex items-center space-x-3 lg:space-x-4">
-                <img
-                  src="https://placehold.co/100x100/e2e8f0/0f172a?text=QR"
-                  alt="QR Code"
-                  class="w-20 h-20 lg:w-24 lg:h-24 rounded-lg bg-white p-1"
-                />
-                <div class="space-y-1 lg:space-y-2">
-                  <a href="#" class="block"
-                    ><img
-                      src="https://placehold.co/120x40/0f172a/e2e8f0?text=Google+Play"
-                      alt="Google Play"
-                      class="h-8 lg:h-10"
-                  /></a>
-                  <a href="#" class="block"
-                    ><img
-                      src="https://placehold.co/120x40/0f172a/e2e8f0?text=App+Store"
-                      alt="App Store"
-                      class="h-8 lg:h-10"
-                  /></a>
-                </div>
-              </div>
             </div>
           </div>
           <div
