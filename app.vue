@@ -531,11 +531,13 @@
             <!-- Support 和 Legal 并排 -->
             <div class="grid grid-cols-2 gap-6">
               <!-- 支持 -->
-              <div>
-                <h4 class="font-bold text-white mb-3 text-sm flex items-center">
+              <div class="text-center lg:text-left">
+                <h4
+                  class="font-bold text-white mb-3 justify-center lg:justify-normal text-sm flex items-center"
+                >
                   <Icon
                     name="heroicons:lifebuoy"
-                    class="h-4 w-4 text-purple-400 mr-2"
+                    class="h-4 w-4 text-purple-400 mr-2 flex-shrink-0"
                   />
                   Support
                 </h4>
@@ -543,55 +545,40 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Help Center
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Contact Us
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Live Chat
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Order Status
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Refund Policy
                     </a>
                   </li>
@@ -599,11 +586,13 @@
               </div>
 
               <!-- 法律与安全 -->
-              <div>
-                <h4 class="font-bold text-white mb-3 text-sm flex items-center">
+              <div class="text-center lg:text-left">
+                <h4
+                  class="font-bold text-white mb-3 text-sm justify-center lg:justify-normal flex items-center"
+                >
                   <Icon
                     name="heroicons:shield-check"
-                    class="h-4 w-4 text-amber-400 mr-2"
+                    class="h-4 w-4 text-amber-400 mr-2 flex-shrink-0"
                   />
                   Legal
                 </h4>
@@ -611,55 +600,40 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Terms of Service
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Privacy Policy
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Cookie Policy
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Security Center
                     </a>
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
                     >
-                      <span
-                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                      ></span>
                       Trust & Safety
                     </a>
                   </li>
@@ -669,9 +643,9 @@
           </div>
 
           <!-- PC端布局 -->
-          <div class="hidden lg:grid lg:grid-cols-3 lg:gap-8">
+          <div class="hidden lg:flex justify-between">
             <!-- 品牌信息 -->
-            <div>
+            <div class="lg:max-w-[500px]">
               <div class="flex items-center mb-6">
                 <img src="/logo.png" alt="Logo" class="h-20 w-auto" />
               </div>
@@ -725,140 +699,117 @@
               </div>
             </div>
 
-            <!-- 支持 -->
-            <div>
-              <h4 class="font-bold text-white mb-4 text-base flex items-center">
-                <Icon
-                  name="heroicons:lifebuoy"
-                  class="h-5 w-5 text-purple-400 mr-2"
-                />
-                Support
-              </h4>
-              <ul class="space-y-3 text-sm">
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Help Center
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Contact Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Live Chat
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Order Status
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Refund Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <!-- Support 和 Legal 右侧并排 -->
+            <div class="grid grid-cols-2 gap-8 lg:gap-20">
+              <!-- 支持 -->
+              <div>
+                <h4
+                  class="font-bold text-white mb-4 text-base flex items-center"
+                >
+                  <Icon
+                    name="heroicons:lifebuoy"
+                    class="h-5 w-5 text-purple-400 mr-2 flex-shrink-0"
+                  />
+                  Support
+                </h4>
+                <ul class="space-y-3 text-sm">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                    >
+                      Help Center
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                    >
+                      Contact Us
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                    >
+                      Live Chat
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                    >
+                      Order Status
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                    >
+                      Refund Policy
+                    </a>
+                  </li>
+                </ul>
+              </div>
 
-            <!-- 法律与安全 -->
-            <div>
-              <h4 class="font-bold text-white mb-4 text-base flex items-center">
-                <Icon
-                  name="heroicons:shield-check"
-                  class="h-5 w-5 text-amber-400 mr-2"
-                />
-                Legal
-              </h4>
-              <ul class="space-y-3 text-sm">
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Cookie Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Security Center
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
-                  >
-                    <span
-                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></span>
-                    Trust & Safety
-                  </a>
-                </li>
-              </ul>
+              <!-- 法律与安全 -->
+              <div>
+                <h4
+                  class="font-bold text-white mb-4 text-base flex items-center"
+                >
+                  <Icon
+                    name="heroicons:shield-check"
+                    class="h-5 w-5 text-amber-400 mr-2 flex-shrink-0"
+                  />
+                  Legal
+                </h4>
+                <ul class="space-y-3 text-sm">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                    >
+                      Terms of Service
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                    >
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                    >
+                      Cookie Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                    >
+                      Security Center
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                    >
+                      Trust & Safety
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
