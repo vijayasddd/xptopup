@@ -459,57 +459,507 @@
         </div>
       </main>
 
-      <footer class="bg-slate-800/50 border-t border-slate-700 mt-8 lg:mt-16">
-        <div class="container mx-auto px-3 lg:px-8 py-6 lg:py-10">
-          <div
-            class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-8"
-          >
-            <div class="col-span-2 lg:col-span-2">
-              <div class="flex items-center mb-3 lg:mb-4">
-                <img src="/logo.png" alt="Logo" class="h-16 lg:h-20 w-auto" />
-              </div>
-              <p class="text-xs lg:text-sm text-slate-400">
-                Your one-stop shop for instant game top-ups.
-              </p>
-            </div>
+      <footer
+        class="bg-slate-800/50 backdrop-blur-sm border-t border-slate-700 mt-8 lg:mt-16 relative overflow-hidden"
+      >
+        <!-- 背景装饰元素 -->
+        <div
+          class="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-full -translate-y-16"
+        ></div>
+        <div
+          class="absolute bottom-0 right-1/4 w-40 h-40 bg-gradient-to-tl from-amber-500/10 to-pink-500/10 rounded-full translate-y-20"
+        ></div>
+
+        <div class="container mx-auto px-3 lg:px-8 py-6 lg:py-12 relative z-10">
+          <!-- 移动端布局 -->
+          <div class="lg:hidden space-y-8">
+            <!-- 品牌信息 -->
             <div>
-              <h4
-                class="font-bold text-white mb-2 lg:mb-3 text-sm lg:text-base"
-              >
+              <div class="flex items-center mb-4">
+                <img src="/logo.png" alt="Logo" class="h-16 w-auto" />
+              </div>
+              <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+                Your trusted partner for instant game top-ups. Fast, secure, and
+                reliable service for all your gaming needs.
+              </p>
+
+              <!-- 社交媒体链接 -->
+              <div class="flex space-x-4">
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-cyan-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-cyan-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:twitter"
+                      class="h-5 w-5 text-slate-400 group-hover:text-cyan-400"
+                    />
+                  </div>
+                </a>
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-purple-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-purple-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:discord"
+                      class="h-5 w-5 text-slate-400 group-hover:text-purple-400"
+                    />
+                  </div>
+                </a>
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-red-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-red-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:youtube"
+                      class="h-5 w-5 text-slate-400 group-hover:text-red-400"
+                    />
+                  </div>
+                </a>
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-pink-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-pink-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:instagram"
+                      class="h-5 w-5 text-slate-400 group-hover:text-pink-400"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Support 和 Legal 并排 -->
+            <div class="grid grid-cols-2 gap-6">
+              <!-- 支持 -->
+              <div>
+                <h4 class="font-bold text-white mb-3 text-sm flex items-center">
+                  <Icon
+                    name="heroicons:lifebuoy"
+                    class="h-4 w-4 text-purple-400 mr-2"
+                  />
+                  Support
+                </h4>
+                <ul class="space-y-2 text-xs">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Help Center
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Contact Us
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Live Chat
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Order Status
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Refund Policy
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- 法律与安全 -->
+              <div>
+                <h4 class="font-bold text-white mb-3 text-sm flex items-center">
+                  <Icon
+                    name="heroicons:shield-check"
+                    class="h-4 w-4 text-amber-400 mr-2"
+                  />
+                  Legal
+                </h4>
+                <ul class="space-y-2 text-xs">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Terms of Service
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Cookie Policy
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Security Center
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></span>
+                      Trust & Safety
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- PC端布局 -->
+          <div class="hidden lg:grid lg:grid-cols-3 lg:gap-8">
+            <!-- 品牌信息 -->
+            <div>
+              <div class="flex items-center mb-6">
+                <img src="/logo.png" alt="Logo" class="h-20 w-auto" />
+              </div>
+              <p class="text-base text-slate-300 mb-6 leading-relaxed">
+                Your trusted partner for instant game top-ups. Fast, secure, and
+                reliable service for all your gaming needs.
+              </p>
+
+              <!-- 社交媒体链接 -->
+              <div class="flex space-x-4">
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-cyan-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-cyan-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:twitter"
+                      class="h-5 w-5 text-slate-400 group-hover:text-cyan-400"
+                    />
+                  </div>
+                </a>
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-purple-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-purple-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:discord"
+                      class="h-5 w-5 text-slate-400 group-hover:text-purple-400"
+                    />
+                  </div>
+                </a>
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-red-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-red-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:youtube"
+                      class="h-5 w-5 text-slate-400 group-hover:text-red-400"
+                    />
+                  </div>
+                </a>
+                <a href="#" class="group">
+                  <div
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-pink-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-pink-500/25"
+                  >
+                    <Icon
+                      name="fa-brands:instagram"
+                      class="h-5 w-5 text-slate-400 group-hover:text-pink-400"
+                    />
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- 支持 -->
+            <div>
+              <h4 class="font-bold text-white mb-4 text-base flex items-center">
+                <Icon
+                  name="heroicons:lifebuoy"
+                  class="h-5 w-5 text-purple-400 mr-2"
+                />
                 Support
               </h4>
-              <ul
-                class="space-y-1 lg:space-y-2 text-xs lg:text-sm text-slate-300"
-              >
-                <li><a href="#" class="hover:text-cyan-400">Help Center</a></li>
-                <li><a href="#" class="hover:text-cyan-400">Contact Us</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4
-                class="font-bold text-white mb-2 lg:mb-3 text-sm lg:text-base"
-              >
-                Legal
-              </h4>
-              <ul
-                class="space-y-1 lg:space-y-2 text-xs lg:text-sm text-slate-300"
-              >
+              <ul class="space-y-3 text-sm">
                 <li>
-                  <a href="#" class="hover:text-cyan-400">Terms of Service</a>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Help Center
+                  </a>
                 </li>
                 <li>
-                  <a href="#" class="hover:text-cyan-400">Privacy Policy</a>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Live Chat
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Order Status
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-purple-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-purple-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Refund Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- 法律与安全 -->
+            <div>
+              <h4 class="font-bold text-white mb-4 text-base flex items-center">
+                <Icon
+                  name="heroicons:shield-check"
+                  class="h-5 w-5 text-amber-400 mr-2"
+                />
+                Legal
+              </h4>
+              <ul class="space-y-3 text-sm">
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Cookie Policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Security Center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="text-slate-300 hover:text-amber-400 transition-colors flex items-center group"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    ></span>
+                    Trust & Safety
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div
-            class="mt-6 lg:mt-8 pt-4 lg:pt-6 border-t border-slate-700 text-center text-xs lg:text-sm text-slate-500"
-          >
-            <p>
-              &copy; {{ new Date().getFullYear() }} HSRTopUp. All rights
-              reserved. Not affiliated with HoYoverse.
-            </p>
+
+          <!-- 支付方式 -->
+          <div class="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-slate-700/50">
+            <div
+              class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-6 lg:space-y-0"
+            >
+              <!-- 支付方式 -->
+              <div class="text-center lg:text-left">
+                <h5
+                  class="text-sm font-medium text-slate-300 mb-3 flex items-center justify-center lg:justify-start"
+                >
+                  <Icon
+                    name="heroicons:credit-card"
+                    class="h-4 w-4 text-green-400 mr-2"
+                  />
+                  Secure Payment Methods
+                </h5>
+                <div
+                  class="flex flex-wrap gap-3 justify-center lg:justify-start"
+                >
+                  <div
+                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                  >
+                    <Icon
+                      name="fa-brands:paypal"
+                      class="h-5 w-5 lg:h-6 lg:w-6 text-blue-400"
+                    />
+                  </div>
+                  <div
+                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                  >
+                    <Icon
+                      name="fa-brands:cc-visa"
+                      class="h-5 w-5 lg:h-6 lg:w-6 text-blue-600"
+                    />
+                  </div>
+                  <div
+                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                  >
+                    <Icon
+                      name="fa-brands:cc-mastercard"
+                      class="h-5 w-5 lg:h-6 lg:w-6 text-red-500"
+                    />
+                  </div>
+                  <div
+                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                  >
+                    <Icon
+                      name="fa-brands:google-pay"
+                      class="h-5 w-5 lg:h-6 lg:w-6 text-gray-300"
+                    />
+                  </div>
+                  <div
+                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                  >
+                    <Icon
+                      name="fa-brands:apple-pay"
+                      class="h-5 w-5 lg:h-6 lg:w-6 text-gray-300"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- 统计信息 -->
+              <div
+                class="flex items-center justify-center lg:justify-end space-x-6 lg:space-x-8"
+              >
+                <div class="text-center">
+                  <p class="text-lg lg:text-xl font-bold text-cyan-400">1M+</p>
+                  <p class="text-xs text-slate-400">Happy Customers</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-lg lg:text-xl font-bold text-purple-400">
+                    24/7
+                  </p>
+                  <p class="text-xs text-slate-400">Support</p>
+                </div>
+                <div class="text-center">
+                  <p class="text-lg lg:text-xl font-bold text-amber-400">
+                    99.9%
+                  </p>
+                  <p class="text-xs text-slate-400">Uptime</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 版权信息 -->
+          <div class="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-slate-700/50">
+            <div class="text-center">
+              <p class="text-xs lg:text-sm text-slate-400">
+                &copy; {{ new Date().getFullYear() }} HSRTopUp. All rights
+                reserved.
+              </p>
+              <p class="text-xs text-slate-500 mt-1">
+                Not affiliated with HoYoverse. All trademarks belong to their
+                respective owners.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
