@@ -8,42 +8,8 @@
       >
         <div class="flex items-center space-x-8">
           <div class="flex items-center space-x-2">
-            <svg
-              class="h-8 w-8 text-cyan-400"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-              />
-            </svg>
+            <Icon name="heroicons:star" class="h-8 w-8 text-cyan-400" />
             <span class="text-2xl font-bold text-white">StellarShop</span>
-          </div>
-          <div class="hidden lg:flex items-center bg-slate-700 rounded-full">
-            <input
-              type="text"
-              placeholder="Honkai: Star Rail"
-              class="bg-transparent pl-4 pr-2 py-2 w-48 focus:outline-none placeholder-slate-400"
-            />
-            <button class="p-2 text-slate-400 hover:text-cyan-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
           </div>
         </div>
         <div class="flex items-center space-x-4">
@@ -57,72 +23,22 @@
                 class="w-5 h-auto rounded-sm"
               />
               <span>EN</span><span>/</span><span>USD</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            <button class="text-slate-300 hover:text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                />
-              </svg>
+              <Icon name="heroicons:chevron-down" class="h-4 w-4" />
             </button>
           </div>
           <button
             class="flex items-center space-x-2 text-slate-300 hover:text-white"
+            @click="showAuthModal = true"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
+            <Icon name="heroicons:user-circle" class="h-6 w-6" />
             <span class="text-sm font-medium">Login</span>
           </button>
-          <button class="lg:hidden text-slate-300 hover:text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+          <button
+            class="text-slate-300 flex items-center space-x-2 hover:text-white"
+            @click="showOrderListModal = true"
+          >
+            <Icon name="heroicons:clipboard-document-list" class="h-6 w-6" />
+            <span class="text-sm font-medium">Orders</span>
           </button>
         </div>
       </nav>
@@ -160,13 +76,13 @@
               <div
                 v-for="product in products"
                 :key="product.name"
-                @click="selectedProduct = product"
                 :class="[
                   'bg-slate-800 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 border-2',
                   selectedProduct?.name === product.name
                     ? 'border-cyan-400 shadow-lg shadow-cyan-500/20'
                     : 'border-slate-700 hover:border-slate-600',
                 ]"
+                @click="selectedProduct = product"
               >
                 <div class="relative">
                   <img
@@ -189,6 +105,17 @@
                 </p>
               </div>
             </div>
+          </div>
+
+          <!-- 移动端充值表单 - 只在小屏幕显示 -->
+          <div class="mt-8 lg:hidden">
+            <TopUpForm
+              v-model:selected-server="selectedServer"
+              v-model:uid="uid"
+              :selected-product="selectedProduct"
+              :is-mobile="true"
+              @show-order-modal="showOrderModal = true"
+            />
           </div>
 
           <div class="mt-12 space-y-8">
@@ -221,146 +148,106 @@
             </div>
             <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
               <h2 class="text-xl font-bold text-white mb-4">User Reviews</h2>
-              <div class="flex items-center space-x-4">
+              <div class="space-y-6">
                 <div class="text-center">
                   <p class="text-5xl font-bold text-white">5.0</p>
-                  <div class="flex text-amber-400 text-xl">
-                    <span>★</span><span>★</span><span>★</span><span>★</span
-                    ><span>★</span>
+                  <div class="flex justify-center text-amber-400 text-xl mt-2">
+                    <Icon name="heroicons:star-solid" />
+                    <Icon name="heroicons:star-solid" />
+                    <Icon name="heroicons:star-solid" />
+                    <Icon name="heroicons:star-solid" />
+                    <Icon name="heroicons:star-solid" />
                   </div>
                   <p class="text-sm text-slate-400 mt-1">100k+ reviews</p>
                 </div>
-                <div class="w-full">
+                <div class="max-w-2xl mx-auto">
                   <div
                     v-for="i in 5"
                     :key="i"
-                    class="flex items-center space-x-2"
+                    class="flex items-center space-x-2 mb-1"
                   >
-                    <span class="text-sm text-amber-400">{{ 6 - i }} ★</span>
+                    <span class="text-sm text-amber-400 w-6">{{ 6 - i }}</span>
+                    <Icon
+                      name="heroicons:star-solid"
+                      class="h-3 w-3 text-amber-400"
+                    />
                     <div class="w-full bg-slate-700 rounded-full h-2">
                       <div
                         class="bg-amber-400 h-2 rounded-full"
                         :style="{ width: i === 1 ? '100%' : '0%' }"
-                      ></div>
+                      />
                     </div>
                     <span class="text-sm text-slate-400 w-10 text-right">{{
                       i === 1 ? "100%" : "0%"
                     }}</span>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-1 mt-8 lg:mt-0">
-          <div
-            class="bg-slate-800 rounded-xl p-6 border border-slate-700 sticky top-28"
-          >
-            <div>
-              <label
-                for="server"
-                class="block text-sm font-medium text-slate-300 mb-2"
-                >1. Select your server</label
-              >
-              <select
-                id="server"
-                class="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
-              >
-                <option>America</option>
-                <option>Europe</option>
-                <option>Asia</option>
-                <option>TW, HK, MO</option>
-              </select>
-            </div>
-
-            <div class="mt-6">
-              <label
-                for="uid"
-                class="block text-sm font-medium text-slate-300 mb-2"
-                >2. Enter your UID</label
-              >
-              <input
-                type="text"
-                id="uid"
-                placeholder="Enter your User ID (UID)"
-                class="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition placeholder-slate-500"
-              />
-            </div>
-
-            <div class="mt-8 pt-6 border-t border-slate-700">
-              <h3 class="text-lg font-semibold text-white">Order Summary</h3>
-              <div v-if="selectedProduct" class="mt-4 space-y-3">
-                <div class="flex justify-between text-sm">
-                  <span class="text-slate-300">{{ selectedProduct.name }}</span>
-                  <span class="font-medium text-white"
-                    >${{ selectedProduct.price }}</span
+                <div class="space-y-4">
+                  <div
+                    v-for="(review, index) in displayedReviews"
+                    :key="index"
+                    class="bg-slate-700/50 rounded-lg p-4"
                   >
+                    <div class="flex items-start space-x-3">
+                      <div
+                        class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0"
+                      >
+                        <span class="text-white text-sm font-bold">{{
+                          review.username[0]
+                        }}</span>
+                      </div>
+                      <div class="flex-1">
+                        <div class="space-y-1">
+                          <span class="text-white font-medium block">{{
+                            review.username
+                          }}</span>
+                          <div class="flex text-amber-400">
+                            <Icon
+                              v-for="i in review.rating"
+                              :key="i"
+                              name="heroicons:star-solid"
+                              class="h-4 w-4"
+                            />
+                            <Icon
+                              v-for="i in 5 - review.rating"
+                              :key="i"
+                              name="heroicons:star"
+                              class="h-4 w-4"
+                            />
+                          </div>
+                        </div>
+                        <p class="text-slate-300 text-sm mt-3">
+                          {{ review.comment }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="flex justify-between text-sm text-slate-300">
-                  <span>Service Fee</span>
-                  <span>$0.00</span>
+                <div
+                  v-if="reviews.length > displayedReviews.length"
+                  class="text-center"
+                >
+                  <button
+                    class="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-sm font-medium transition-colors"
+                    @click="loadMoreReviews"
+                  >
+                    Load More Reviews
+                  </button>
                 </div>
               </div>
-              <div v-else class="mt-4 text-center text-slate-400 text-sm py-8">
-                <p>Please select a product</p>
-              </div>
-
-              <div class="mt-6 flex justify-between items-center">
-                <span class="text-xl font-bold text-white">Total</span>
-                <span class="text-2xl font-bold text-amber-400"
-                  >${{ selectedProduct ? selectedProduct.price : "0.00" }}</span
-                >
-              </div>
-            </div>
-
-            <div class="mt-8">
-              <button
-                class="w-full bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-4 rounded-lg text-lg transition-all duration-300 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/40 flex items-center justify-center space-x-2"
-              >
-                <span>Top Up Now</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="mt-12">
-        <h2 class="text-2xl font-bold text-white mb-6">News & Guides</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div
-            v-for="news in newsItems"
-            :key="news.title"
-            class="bg-slate-800 rounded-xl overflow-hidden group border border-slate-700 hover:border-cyan-400/50 transition-all duration-300"
-          >
-            <img
-              :src="news.image"
-              :alt="news.title"
-              class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-            <div class="p-4">
-              <p
-                class="text-sm font-semibold text-white leading-tight group-hover:text-cyan-400 transition-colors"
-              >
-                {{ news.title }}
-              </p>
-              <p class="text-xs text-slate-400 mt-2">{{ news.date }}</p>
-            </div>
-          </div>
+        <!-- PC端充值表单 - 只在大屏幕显示 -->
+        <div class="hidden lg:block lg:col-span-1">
+          <TopUpForm
+            v-model:selected-server="selectedServer"
+            v-model:uid="uid"
+            :selected-product="selectedProduct"
+            :is-mobile="false"
+            @show-order-modal="showOrderModal = true"
+          />
         </div>
       </div>
     </main>
@@ -370,20 +257,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
           <div class="col-span-2 lg:col-span-2">
             <div class="flex items-center space-x-2 mb-4">
-              <svg
-                class="h-8 w-8 text-cyan-400"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-                />
-              </svg>
+              <Icon name="heroicons:star" class="h-8 w-8 text-cyan-400" />
               <span class="text-2xl font-bold text-white">StellarShop</span>
             </div>
             <p class="text-sm text-slate-400">
@@ -443,11 +317,38 @@
         </div>
       </div>
     </footer>
+
+    <!-- 弹窗组件 -->
+    <AuthModal
+      :show="showAuthModal"
+      @close="showAuthModal = false"
+      @auth="handleAuth"
+      @google-auth="handleGoogleAuth"
+    />
+
+    <OrderModal
+      :show="showOrderModal"
+      :selected-server="selectedServer"
+      :uid="uid"
+      :selected-product="selectedProduct"
+      @close="showOrderModal = false"
+      @process-order="processOrder"
+    />
+
+    <OrderListModal
+      :show="showOrderListModal"
+      :order-history="orderHistory"
+      @close="showOrderListModal = false"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
+import AuthModal from "~/components/AuthModal.vue";
+import OrderListModal from "~/components/OrderListModal.vue";
+import OrderModal from "~/components/OrderModal.vue";
+import TopUpForm from "~/components/TopUpForm.vue";
 
 const products = ref([
   {
@@ -494,7 +395,9 @@ const products = ref([
   },
 ]);
 
-const selectedProduct = ref(products.value[3]); // Pre-select the 1980 pack for demonstration
+const selectedProduct = ref(products.value[3]);
+const selectedServer = ref("America");
+const uid = ref("");
 
 const faqs = ref([
   {
@@ -511,35 +414,251 @@ const faqs = ref([
   },
 ]);
 
-const newsItems = ref([
+// Reviews data
+const reviews = ref([
   {
-    title: 'Version 2.4 "Stellar Dreams" Now Available!',
-    date: "July 21, 2025",
-    image: "https://placehold.co/400x200/0f172a/94a3b8?text=Update",
+    username: "StarTrailblazer",
+    rating: 5,
+    date: "2 days ago",
+    comment:
+      "Fast delivery! Got my Oneiric Shards within 5 minutes of payment. Highly recommend!",
   },
   {
-    title: "Character Guide: Acheron Build",
-    date: "July 19, 2025",
-    image: "https://placehold.co/400x200/0f172a/94a3b8?text=Guide",
+    username: "MarchLover",
+    rating: 5,
+    date: "3 days ago",
+    comment:
+      "Been using this service for months. Always reliable and secure. Best prices too!",
   },
   {
-    title: 'New Event: "Galactic Baseballer" Deep Dive',
-    date: "July 18, 2025",
-    image: "https://placehold.co/400x200/0f172a/94a3b8?text=Event",
+    username: "DanHengFan",
+    rating: 4,
+    date: "1 week ago",
+    comment:
+      "Great service overall. Payment was smooth and delivery was quick. Will use again.",
   },
   {
-    title: "Summer Top-Up Bonus Event Is Here!",
-    date: "July 15, 2025",
-    image: "https://placehold.co/400x200/0f172a/94a3b8?text=Promo",
+    username: "StellaFan2024",
+    rating: 5,
+    date: "1 week ago",
+    comment:
+      "Perfect experience! Customer support was very helpful when I had questions.",
+  },
+  {
+    username: "HSRPlayer123",
+    rating: 5,
+    date: "2 weeks ago",
+    comment:
+      "This is my go-to site for HSR top-ups. Never had any issues, always delivered instantly.",
+  },
+  {
+    username: "TrailblazerPro",
+    rating: 4,
+    date: "2 weeks ago",
+    comment:
+      "Good service and competitive prices. The website is easy to use too.",
+  },
+  {
+    username: "CaelumUser",
+    rating: 5,
+    date: "3 weeks ago",
+    comment:
+      "Amazing! Got my Express Supply Pass immediately. No hassle at all.",
+  },
+  {
+    username: "HoyoFan88",
+    rating: 5,
+    date: "3 weeks ago",
+    comment:
+      "Fast, reliable, and secure. What more could you ask for? 5 stars!",
+  },
+  {
+    username: "GalaxyWanderer",
+    rating: 4,
+    date: "1 month ago",
+    comment:
+      "Very satisfied with the service. Quick processing and fair prices.",
+  },
+  {
+    username: "StarRailAddict",
+    rating: 5,
+    date: "1 month ago",
+    comment:
+      "Best top-up service I've used. Never disappoints and always delivers on time.",
+  },
+  {
+    username: "ExpressRider",
+    rating: 5,
+    date: "1 month ago",
+    comment:
+      "Excellent service! Payment process is smooth and delivery is instant.",
+  },
+  {
+    username: "CosmicTrader",
+    rating: 4,
+    date: "1 month ago",
+    comment:
+      "Reliable service with good customer support. Recommended for HSR players.",
+  },
+  {
+    username: "StellarGamer",
+    rating: 5,
+    date: "2 months ago",
+    comment:
+      "Been using this for all my top-ups. Never had any problems, always fast delivery.",
+  },
+  {
+    username: "VoidSeeker",
+    rating: 5,
+    date: "2 months ago",
+    comment:
+      "Great prices and instant delivery. This site is a gem for HSR players!",
+  },
+  {
+    username: "QuantumPlayer",
+    rating: 4,
+    date: "2 months ago",
+    comment:
+      "Good experience overall. The interface is user-friendly and payment is secure.",
   },
 ]);
+
+const reviewsToShow = ref(10);
+const displayedReviews = computed(() =>
+  reviews.value.slice(0, reviewsToShow.value)
+);
+
+// Modal states
+const showAuthModal = ref(false);
+const showOrderModal = ref(false);
+const showOrderListModal = ref(false);
+
+// Order history data
+const orderHistory = ref([
+  {
+    orderNumber: "#ORD-2024-001",
+    game: "Honkai: Star Rail",
+    productName: "Oneiric Shard ×1980",
+    productImage: "https://placehold.co/200x100/1e293b/amber-400?text=1980",
+    server: "America",
+    uid: "123456789",
+    amount: "29.99",
+    paymentMethod: "PayPal",
+    date: "2024-01-15 14:30",
+    status: "completed",
+  },
+  {
+    orderNumber: "#ORD-2024-002",
+    game: "Honkai: Star Rail",
+    productName: "Express Supply Pass",
+    productImage: "https://placehold.co/200x100/1e293b/cyan-400?text=Pass",
+    server: "Asia",
+    uid: "987654321",
+    amount: "4.99",
+    paymentMethod: "Credit Card",
+    date: "2024-01-10 09:15",
+    status: "completed",
+  },
+  {
+    orderNumber: "#ORD-2024-003",
+    game: "Honkai: Star Rail",
+    productName: "Oneiric Shard ×980",
+    productImage: "https://placehold.co/200x100/1e293b/amber-400?text=980",
+    server: "Europe",
+    uid: "456789123",
+    amount: "14.99",
+    paymentMethod: "Razer Gold",
+    date: "2024-01-08 16:45",
+    status: "pending",
+  },
+  {
+    orderNumber: "#ORD-2024-004",
+    game: "Honkai: Star Rail",
+    productName: "Oneiric Shard ×300",
+    productImage: "https://placehold.co/200x100/1e293b/amber-400?text=300",
+    server: "America",
+    uid: "789123456",
+    amount: "4.99",
+    paymentMethod: "PayPal",
+    date: "2024-01-05 11:20",
+    status: "completed",
+  },
+  // 添加更多测试数据以展示分页功能
+  {
+    orderNumber: "#ORD-2024-005",
+    game: "Honkai: Star Rail",
+    productName: "Oneiric Shard ×6480",
+    productImage: "https://placehold.co/200x100/1e293b/amber-400?text=6480",
+    server: "TW, HK, MO",
+    uid: "111222333",
+    amount: "99.99",
+    paymentMethod: "Credit Card",
+    date: "2024-01-03 20:15",
+    status: "completed",
+  },
+  {
+    orderNumber: "#ORD-2024-006",
+    game: "Honkai: Star Rail",
+    productName: "Oneiric Shard ×60",
+    productImage: "https://placehold.co/200x100/1e293b/amber-400?text=60",
+    server: "America",
+    uid: "444555666",
+    amount: "0.99",
+    paymentMethod: "PayPal",
+    date: "2024-01-02 10:30",
+    status: "completed",
+  },
+  {
+    orderNumber: "#ORD-2024-007",
+    game: "Honkai: Star Rail",
+    productName: "Oneiric Shard ×3280",
+    productImage: "https://placehold.co/200x100/1e293b/amber-400?text=3280",
+    server: "Asia",
+    uid: "777888999",
+    amount: "49.99",
+    paymentMethod: "Razer Gold",
+    date: "2024-01-01 15:45",
+    status: "failed",
+  },
+  {
+    orderNumber: "#ORD-2024-008",
+    game: "Honkai: Star Rail",
+    productName: "Express Supply Pass",
+    productImage: "https://placehold.co/200x100/1e293b/cyan-400?text=Pass",
+    server: "Europe",
+    uid: "000111222",
+    amount: "4.99",
+    paymentMethod: "Credit Card",
+    date: "2023-12-30 08:20",
+    status: "completed",
+  },
+]);
+
+// Functions
+const loadMoreReviews = () => {
+  reviewsToShow.value = Math.min(reviewsToShow.value + 5, reviews.value.length);
+};
+
+const handleAuth = (authData) => {
+  // Handle login/register logic here
+  console.log("Auth form submitted:", authData);
+  showAuthModal.value = false;
+};
+
+const handleGoogleAuth = () => {
+  // Handle Google authentication
+  console.log("Google auth initiated");
+  showAuthModal.value = false;
+};
+
+const processOrder = (orderData) => {
+  // Handle order processing
+  console.log("Processing order:", orderData);
+  showOrderModal.value = false;
+  // Show success message or redirect to payment
+};
 </script>
 
 <style>
-/* 通常，对于像 'font-sans' 这样的全局样式，
-  会放在你的主 CSS 文件中 (e.g., index.css or app.css).
-  但为了满足单文件组件的要求，这里将它留空。
-  Tailwind JIT 编译器会自动处理所有实用程序类。
-  无需编写额外的 CSS。
-*/
+/* Tailwind handles all styling */
 </style>
