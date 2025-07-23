@@ -9,12 +9,12 @@
     >
       <div
         v-if="show"
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 modal-backdrop"
+        class="fixed inset-0 bg-gradient-to-br from-indigo-950/80 via-slate-900/80 to-purple-950/80 backdrop-blur-sm flex items-center justify-center z-50 modal-backdrop"
         @click.self="handleBackdropClick"
       >
         <div
           :class="[
-            'bg-slate-800 rounded-xl border border-slate-700 overflow-hidden modal-content',
+            'bg-gradient-to-br from-indigo-900/90 via-slate-800/90 to-purple-900/90 backdrop-blur-md rounded-xl border border-amber-400/30 overflow-hidden modal-content shadow-2xl shadow-purple-900/30',
             sizeClasses,
             'mx-4',
           ]"
@@ -22,18 +22,21 @@
           <!-- Header -->
           <div
             v-if="title || $slots.header"
-            class="flex justify-between items-center p-6 pb-4"
+            class="flex justify-between items-center p-6 pb-4 border-b border-slate-600/30"
           >
             <div v-if="$slots.header">
               <slot name="header" />
             </div>
-            <h2 v-else-if="title" class="text-2xl font-bold text-white">
+            <h2
+              v-else-if="title"
+              class="text-2xl font-bold text-white drop-shadow-lg"
+            >
               {{ title }}
             </h2>
 
             <button
               v-if="showCloseButton"
-              class="text-slate-400 hover:text-white transition-colors"
+              class="text-slate-400 hover:text-amber-300 transition-all duration-300 p-1 rounded-lg hover:bg-slate-700/30"
               @click="handleClose"
             >
               <Icon name="heroicons:x-mark" class="h-6 w-6" />
@@ -52,7 +55,10 @@
           </div>
 
           <!-- Footer -->
-          <div v-if="$slots.footer" class="px-6 pb-6">
+          <div
+            v-if="$slots.footer"
+            class="px-6 pb-6 border-t border-slate-600/30 mt-4 pt-4"
+          >
             <slot name="footer" />
           </div>
         </div>

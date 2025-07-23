@@ -1,21 +1,21 @@
 <template>
   <div
     :class="[
-      'bg-slate-800 rounded-xl p-6 border border-slate-700',
+      'bg-gradient-to-br from-indigo-900/60 via-slate-800/60 to-purple-900/60 backdrop-blur-sm rounded-xl p-6 border border-amber-400/30 shadow-xl shadow-purple-900/20',
       isMobile ? '' : 'sticky top-28',
     ]"
   >
     <div>
       <label
         :for="isMobile ? 'server-mobile' : 'server'"
-        class="block text-sm font-medium text-slate-300 mb-2"
+        class="block text-sm font-medium text-slate-200 mb-2 drop-shadow-md"
         >1. Select your server</label
       >
       <select
         :id="isMobile ? 'server-mobile' : 'server'"
         :value="selectedServer"
         @input="$emit('update:selectedServer', $event.target.value)"
-        class="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
+        class="w-full bg-slate-700/60 backdrop-blur-sm border border-slate-600/50 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400/50 transition-all duration-300 text-white shadow-lg hover:border-blue-400/50"
       >
         <option>America</option>
         <option>Europe</option>
@@ -27,7 +27,7 @@
     <div class="mt-6">
       <label
         :for="isMobile ? 'uid-mobile' : 'uid'"
-        class="block text-sm font-medium text-slate-300 mb-2"
+        class="block text-sm font-medium text-slate-200 mb-2 drop-shadow-md"
         >2. Enter your UID</label
       >
       <input
@@ -36,16 +36,18 @@
         :value="uid"
         @input="$emit('update:uid', $event.target.value)"
         placeholder="Enter your User ID (UID)"
-        class="w-full bg-slate-700 border border-slate-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition placeholder-slate-500"
+        class="w-full bg-slate-700/60 backdrop-blur-sm border border-slate-600/50 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400/50 transition-all duration-300 placeholder-slate-400 text-white shadow-lg hover:border-blue-400/50"
       />
     </div>
 
-    <div class="mt-8 pt-6 border-t border-slate-700">
-      <h3 class="text-lg font-semibold text-white">Order Summary</h3>
+    <div class="mt-8 pt-6 border-t border-slate-600/50">
+      <h3 class="text-lg font-semibold text-white drop-shadow-lg">
+        Order Summary
+      </h3>
       <div v-if="selectedProduct" class="mt-4 space-y-3">
         <div class="flex justify-between text-sm">
-          <span class="text-slate-300">{{ selectedProduct.name }}</span>
-          <span class="font-medium text-white"
+          <span class="text-slate-200">{{ selectedProduct.name }}</span>
+          <span class="font-medium text-white drop-shadow-md"
             >${{ selectedProduct.price }}</span
           >
         </div>
@@ -59,8 +61,8 @@
       </div>
 
       <div class="mt-6 flex justify-between items-center">
-        <span class="text-xl font-bold text-white">Total</span>
-        <span class="text-2xl font-bold text-amber-400"
+        <span class="text-xl font-bold text-white drop-shadow-lg">Total</span>
+        <span class="text-2xl font-bold text-amber-400 drop-shadow-lg"
           >${{ selectedProduct ? selectedProduct.price : "0.00" }}</span
         >
       </div>
@@ -70,7 +72,7 @@
       <button
         @click="$emit('showOrderModal')"
         :disabled="!selectedProduct || !uid || !selectedServer"
-        class="w-full bg-cyan-500 hover:bg-cyan-400 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg text-lg transition-all duration-300 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/40 flex items-center justify-center space-x-2"
+        class="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 disabled:from-slate-600 disabled:to-slate-700 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg text-lg transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 flex items-center justify-center space-x-2 backdrop-blur-sm border border-amber-400/30"
       >
         <span>Top Up Now</span>
         <Icon name="heroicons:arrow-right" class="w-6 h-6" />

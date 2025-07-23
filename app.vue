@@ -1,5 +1,7 @@
 <template>
-  <div class="antialiased bg-slate-900 text-slate-200 font-sans relative">
+  <div
+    class="antialiased bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 text-slate-100 font-sans relative min-h-screen"
+  >
     <!-- 固定背景层 -->
     <div
       class="fixed inset-0 z-0"
@@ -9,37 +11,41 @@
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        filter: blur(3px);
-        opacity: 0.2;
       "
     />
 
     <!-- 毛玻璃遮罩层 -->
-    <div class="fixed inset-0 z-10 backdrop-blur-sm bg-slate-900/40" />
+    <div
+      class="fixed inset-0 z-10 backdrop-blur-sm bg-gradient-to-br from-indigo-950/90 via-slate-900/80 to-purple-950/90"
+    />
 
     <!-- 原有内容，添加相对定位确保在背景之上 -->
     <div class="relative z-20">
       <header
-        class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50"
+        class="bg-gradient-to-r from-indigo-900/80 via-slate-800/80 to-purple-900/80 backdrop-blur-md border-b border-amber-400/30 sticky top-0 z-50 shadow-lg shadow-amber-500/10"
       >
         <nav
           class="container mx-auto px-3 lg:px-8 flex items-center justify-between h-16 lg:h-20"
         >
           <div class="flex items-center space-x-8">
             <div class="flex items-center">
-              <img src="/logo.png" alt="Logo" class="h-14 lg:h-20 w-auto" />
+              <img
+                src="/logo.png"
+                alt="Logo"
+                class="h-14 lg:h-20 w-auto drop-shadow-lg"
+              />
             </div>
           </div>
           <div class="flex items-center space-x-4">
             <!-- 语言货币选择 -->
             <div class="flex items-center">
               <button
-                class="flex items-center space-x-1 text-xs lg:text-sm text-slate-300 hover:text-white"
+                class="flex items-center space-x-1 text-xs lg:text-sm text-slate-300 hover:text-amber-300 transition-all duration-300"
                 @click="showLanguageCurrencyModal = true"
               >
                 <Icon
                   name="heroicons:language"
-                  class="h-3 w-3 lg:h-5 lg:w-5 text-cyan-400"
+                  class="h-3 w-3 lg:h-5 lg:w-5 text-amber-400"
                 />
                 <span>{{ currentLanguage.toUpperCase() }}</span
                 ><span>/</span><span>{{ currentCurrency }}</span>
@@ -55,12 +61,13 @@
               <!-- 未登录时显示登录按钮 -->
               <button
                 v-if="!isLoggedIn"
-                class="flex items-center space-x-1 lg:space-x-2 text-white px-2 py-1 lg:px-3 lg:py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all duration-200 hover:shadow-lg"
+                class="flex items-center space-x-1 lg:space-x-2 text-white px-2 py-1 lg:px-3 lg:py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all duration-300 hover:shadow-xl hover:shadow-amber-500/25 hover:scale-105"
                 style="
                   background: linear-gradient(
-                    89.92deg,
-                    rgb(228, 119, 255) 0.07%,
-                    rgb(147, 119, 255)
+                    135deg,
+                    rgb(251, 191, 36) 0%,
+                    rgb(245, 158, 11) 50%,
+                    rgb(217, 119, 6) 100%
                   );
                 "
                 @click="showAuthModal = true"
@@ -75,12 +82,13 @@
               <!-- 已登录时显示订单按钮 -->
               <button
                 v-else
-                class="flex items-center space-x-1 lg:space-x-2 text-white px-2 py-1 lg:px-3 lg:py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all duration-200 hover:shadow-lg"
+                class="flex items-center space-x-1 lg:space-x-2 text-white px-2 py-1 lg:px-3 lg:py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all duration-300 hover:shadow-xl hover:shadow-blue-400/25 hover:scale-105"
                 style="
                   background: linear-gradient(
-                    89.92deg,
-                    rgb(34, 211, 238) 0.07%,
-                    rgb(59, 130, 246)
+                    135deg,
+                    rgb(59, 130, 246) 0%,
+                    rgb(147, 51, 234) 50%,
+                    rgb(168, 85, 247) 100%
                   );
                 "
                 @click="showOrderListModal = true"
@@ -100,14 +108,14 @@
         <div class="lg:grid lg:grid-cols-3 lg:gap-8">
           <div class="lg:col-span-2">
             <div
-              class="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700 relative overflow-hidden"
+              class="bg-gradient-to-br from-indigo-900/60 via-slate-800/60 to-purple-900/60 backdrop-blur-sm rounded-xl p-4 lg:p-6 border border-amber-400/30 relative overflow-hidden shadow-2xl shadow-purple-900/20"
             >
               <!-- 背景装饰元素 -->
               <div
-                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-full -translate-y-16 translate-x-16"
+                class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-full -translate-y-16 translate-x-16 blur-xl"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-amber-500/10 to-pink-500/10 rounded-full translate-y-12 -translate-x-12"
+                class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-400/20 to-purple-500/20 rounded-full translate-y-12 -translate-x-12 blur-xl"
               ></div>
 
               <!-- 合并后的布局 - 替换原来的两个布局 -->
@@ -118,7 +126,7 @@
                   <img
                     src="https://shop.ldrescdn.com/rms/ld-space/process/img/5ba76fd6bcce49d5a3f9e97c2c64b1691737079512.webp"
                     alt="Honkai Star Rail Icon"
-                    class="w-[90px] h-[90px] lg:w-20 lg:h-20 lg:w-28 lg:h-28 rounded-lg border-2 border-cyan-400/50 shadow-lg"
+                    class="w-[90px] h-[90px] lg:w-20 lg:h-20 lg:w-28 lg:h-28 rounded-lg border-2 border-amber-400/70 shadow-xl shadow-amber-500/30"
                   />
 
                   <div class="flex-1 min-w-0">
@@ -127,37 +135,37 @@
                       class="flex flex-col lg:flex-row lg:items-center lg:space-x-3 mb-1 lg:mb-2"
                     >
                       <h1
-                        class="text-lg lg:text-xl lg:text-2xl font-bold text-white mb-1 lg:mb-0"
+                        class="text-lg lg:text-xl lg:text-2xl font-bold text-white mb-1 lg:mb-0 drop-shadow-lg"
                       >
                         Honkai: Star Rail
                       </h1>
                       <div class="flex items-center space-x-1">
                         <Icon
                           name="heroicons:star-solid"
-                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400 drop-shadow-lg"
                         />
                         <Icon
                           name="heroicons:star-solid"
-                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400 drop-shadow-lg"
                         />
                         <Icon
                           name="heroicons:star-solid"
-                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400 drop-shadow-lg"
                         />
                         <Icon
                           name="heroicons:star-solid"
-                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400 drop-shadow-lg"
                         />
                         <Icon
                           name="heroicons:star-solid"
-                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400"
+                          class="h-3 w-3 lg:h-4 lg:w-4 text-amber-400 drop-shadow-lg"
                         />
                       </div>
                     </div>
 
                     <!-- 描述文字 - 复用 -->
                     <p
-                      class="text-xs lg:text-xs lg:text-sm text-cyan-400 leading-5 lg:leading-normal font-medium mb-2 lg:mb-3"
+                      class="text-xs lg:text-xs lg:text-sm text-amber-300 leading-5 lg:leading-normal font-medium mb-2 lg:mb-3 drop-shadow-md"
                     >
                       🎮 Official Direct Top-Up<br class="lg:hidden" /><span
                         class="hidden lg:inline"
@@ -169,19 +177,19 @@
                     <!-- PC端标签 - 只在PC端显示 -->
                     <div class="hidden lg:flex lg:flex-wrap lg:gap-2 lg:gap-3">
                       <span
-                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-green-500/20 text-green-400 text-xs lg:text-sm rounded-full border border-green-500/30"
+                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-emerald-500/20 text-emerald-300 text-xs lg:text-sm rounded-full border border-emerald-400/40 backdrop-blur-sm shadow-lg"
                       >
                         <Icon name="heroicons:shield-check" class="h-3 w-3" />
                         <span>By HoYoverse</span>
                       </span>
                       <span
-                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-blue-500/20 text-blue-400 text-xs lg:text-sm rounded-full border border-blue-500/30"
+                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-blue-500/20 text-blue-300 text-xs lg:text-sm rounded-full border border-blue-400/40 backdrop-blur-sm shadow-lg"
                       >
                         <Icon name="heroicons:bolt" class="h-3 w-3" />
                         <span>Instant Delivery</span>
                       </span>
                       <span
-                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-amber-500/20 text-amber-400 text-xs lg:text-sm rounded-full border border-amber-500/30"
+                        class="inline-flex items-center space-x-1 px-3 py-1.5 bg-amber-500/20 text-amber-300 text-xs lg:text-sm rounded-full border border-amber-400/40 backdrop-blur-sm shadow-lg"
                       >
                         <Icon name="heroicons:trophy" class="h-3 w-3" />
                         <span>Official Verified</span>
@@ -193,19 +201,19 @@
                 <!-- 移动端标签 - 只在移动端显示 -->
                 <div class="flex flex-nowrap lg:hidden gap-1 whitespace-nowrap">
                   <span
-                    class="inline-flex items-center space-x-1 px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30"
+                    class="inline-flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-full border border-emerald-400/40 backdrop-blur-sm"
                   >
                     <Icon name="heroicons:shield-check" class="h-2.5 w-2.5" />
                     <span>By HoYoverse</span>
                   </span>
                   <span
-                    class="inline-flex items-center space-x-1 px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full border border-blue-500/30"
+                    class="inline-flex items-center space-x-1 px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full border border-blue-400/40 backdrop-blur-sm"
                   >
                     <Icon name="heroicons:bolt" class="h-2.5 w-2.5" />
                     <span>Instant Delivery</span>
                   </span>
                   <span
-                    class="inline-flex items-center space-x-1 px-2 py-1 bg-amber-500/20 text-amber-400 text-xs rounded-full border border-amber-500/30"
+                    class="inline-flex items-center space-x-1 px-2 py-1 bg-amber-500/20 text-amber-300 text-xs rounded-full border border-amber-400/40 backdrop-blur-sm"
                   >
                     <Icon name="heroicons:trophy" class="h-2.5 w-2.5" />
                     <span>Verified</span>
@@ -216,9 +224,11 @@
 
             <div class="mt-4">
               <div
-                class="bg-cyan-900/30 border border-cyan-400/50 rounded-lg p-3 lg:p-4 mb-4 lg:mb-6"
+                class="bg-gradient-to-r from-blue-900/40 via-indigo-900/40 to-purple-900/40 border border-blue-400/50 rounded-lg p-3 lg:p-4 mb-4 lg:mb-6 backdrop-blur-sm shadow-lg shadow-blue-500/10"
               >
-                <h2 class="font-semibold text-white text-xs lg:text-sm">
+                <h2
+                  class="font-semibold text-white text-xs lg:text-sm drop-shadow-md"
+                >
                   BONUS REFRESHED! 2X Oneiric Shards on First V3.2 Top-Up
                 </h2>
               </div>
@@ -230,10 +240,10 @@
                   v-for="product in products"
                   :key="product.name"
                   :class="[
-                    'bg-slate-800 rounded-lg p-2 lg:p-3 text-center cursor-pointer transition-all duration-200 border-2 relative overflow-hidden',
+                    'bg-gradient-to-br from-indigo-900/60 via-slate-800/60 to-purple-900/60 backdrop-blur-sm rounded-lg p-2 lg:p-3 text-center cursor-pointer transition-all duration-300 border-2 relative overflow-hidden hover:scale-105 hover:shadow-xl',
                     selectedProduct?.name === product.name
-                      ? 'border-cyan-400 shadow-lg shadow-cyan-500/20'
-                      : 'border-slate-700 hover:border-slate-600',
+                      ? 'border-amber-400/80 shadow-xl shadow-amber-500/30 scale-105'
+                      : 'border-slate-600/50 hover:border-blue-400/50 hover:shadow-blue-500/20',
                   ]"
                   :style="{
                     backgroundImage:
@@ -245,36 +255,38 @@
                   @click="selectedProduct = product"
                 >
                   <!-- 背景遮罩层 -->
-                  <div class="absolute inset-0 bg-slate-900/60" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-indigo-950/70 via-slate-900/70 to-purple-950/70"
+                  />
 
                   <!-- 内容层 -->
                   <div class="relative z-10">
                     <div class="relative">
                       <!-- 固定尺寸的图片容器 -->
                       <div
-                        class="w-full h-16 lg:h-24 mb-2 lg:mb-3 flex items-center justify-center bg-slate-700/20 rounded-md"
+                        class="w-full h-16 lg:h-24 mb-2 lg:mb-3 flex items-center justify-center bg-slate-700/30 rounded-md border border-slate-600/30"
                       >
                         <img
                           :src="product.image"
                           :alt="product.name"
-                          class="max-w-full max-h-full object-contain rounded-md"
+                          class="max-w-full max-h-full object-contain rounded-md drop-shadow-lg"
                         />
                       </div>
                       <div
                         v-if="product.bonus"
-                        class="absolute top-0.5 right-0.5 lg:top-1 lg:right-1 bg-amber-400 text-slate-900 text-xs font-bold px-1 py-0.5 lg:px-1.5 lg:py-0.5 rounded-full shadow-md"
+                        class="absolute top-0.5 right-0.5 lg:top-1 lg:right-1 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 text-xs font-bold px-1 py-0.5 lg:px-1.5 lg:py-0.5 rounded-full shadow-lg shadow-amber-500/50"
                       >
                         {{ product.bonus }}
                       </div>
                     </div>
                     <!-- 固定2行高度的商品名称 -->
                     <h3
-                      class="font-semibold text-xs lg:text-sm text-white h-8 lg:h-10 flex items-start leading-4 lg:leading-5 mb-1 lg:mb-2"
+                      class="font-semibold text-xs lg:text-sm text-white h-8 lg:h-10 flex items-start leading-4 lg:leading-5 mb-1 lg:mb-2 drop-shadow-md"
                     >
                       <span class="line-clamp-2">{{ product.name }}</span>
                     </h3>
                     <p
-                      class="text-amber-400 font-bold text-xs lg:text-base mt-1"
+                      class="text-amber-400 font-bold text-xs lg:text-base mt-1 drop-shadow-lg"
                     >
                       ${{ product.price }}
                     </p>
@@ -296,15 +308,15 @@
 
             <div class="mt-6 lg:mt-12 space-y-4 lg:space-y-8">
               <div
-                class="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700"
+                class="bg-gradient-to-br from-indigo-900/60 via-slate-800/60 to-purple-900/60 backdrop-blur-sm rounded-xl p-4 lg:p-6 border border-slate-600/50 shadow-xl shadow-purple-900/20"
               >
                 <h2
-                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4"
+                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 drop-shadow-lg"
                 >
                   Description
                 </h2>
                 <div
-                  class="text-slate-300 space-y-2 lg:space-y-3 text-sm leading-relaxed"
+                  class="text-slate-200 space-y-2 lg:space-y-3 text-sm leading-relaxed"
                 >
                   <p>Buy Cheap Honkai: Star Rail Top Up - Fast & Safe</p>
                   <p>
@@ -323,41 +335,62 @@
                 </div>
               </div>
               <div
-                class="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700"
+                class="bg-gradient-to-br from-indigo-900/60 via-slate-800/60 to-purple-900/60 backdrop-blur-sm rounded-xl p-4 lg:p-6 border border-slate-600/50 shadow-xl shadow-purple-900/20"
               >
                 <h2
-                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4"
+                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 drop-shadow-lg"
                 >
                   FAQs
                 </h2>
                 <div class="space-y-3 lg:space-y-4">
                   <div v-for="faq in faqs" :key="faq.q" class="text-sm">
-                    <p class="font-semibold text-cyan-400 mb-1">{{ faq.q }}</p>
-                    <p class="text-slate-300">{{ faq.a }}</p>
+                    <p class="font-semibold text-amber-300 mb-1 drop-shadow-md">
+                      {{ faq.q }}
+                    </p>
+                    <p class="text-slate-200">{{ faq.a }}</p>
                   </div>
                 </div>
               </div>
               <div
-                class="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700"
+                class="bg-gradient-to-br from-indigo-900/60 via-slate-800/60 to-purple-900/60 backdrop-blur-sm rounded-xl p-4 lg:p-6 border border-slate-600/50 shadow-xl shadow-purple-900/20"
               >
                 <h2
-                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4"
+                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 drop-shadow-lg"
                 >
                   User Reviews
                 </h2>
                 <div class="space-y-4 lg:space-y-6">
                   <div class="text-center">
-                    <p class="text-4xl lg:text-5xl font-bold text-white">5.0</p>
+                    <p
+                      class="text-4xl lg:text-5xl font-bold text-white drop-shadow-lg"
+                    >
+                      5.0
+                    </p>
                     <div
                       class="flex justify-center text-amber-400 text-lg lg:text-xl mt-2"
                     >
-                      <Icon name="heroicons:star-solid" />
-                      <Icon name="heroicons:star-solid" />
-                      <Icon name="heroicons:star-solid" />
-                      <Icon name="heroicons:star-solid" />
-                      <Icon name="heroicons:star-solid" />
+                      <Icon
+                        name="heroicons:star-solid"
+                        class="drop-shadow-lg"
+                      />
+                      <Icon
+                        name="heroicons:star-solid"
+                        class="drop-shadow-lg"
+                      />
+                      <Icon
+                        name="heroicons:star-solid"
+                        class="drop-shadow-lg"
+                      />
+                      <Icon
+                        name="heroicons:star-solid"
+                        class="drop-shadow-lg"
+                      />
+                      <Icon
+                        name="heroicons:star-solid"
+                        class="drop-shadow-lg"
+                      />
                     </div>
-                    <p class="text-xs lg:text-sm text-slate-400 mt-1">
+                    <p class="text-xs lg:text-sm text-slate-300 mt-1">
                       100k+ reviews
                     </p>
                   </div>
@@ -374,13 +407,13 @@
                         name="heroicons:star-solid"
                         class="h-3 w-3 text-amber-400"
                       />
-                      <div class="w-full bg-slate-700 rounded-full h-2">
+                      <div class="w-full bg-slate-700/50 rounded-full h-2">
                         <div
-                          class="bg-amber-400 h-2 rounded-full"
+                          class="bg-gradient-to-r from-amber-400 to-orange-500 h-2 rounded-full shadow-lg"
                           :style="{ width: i === 1 ? '100%' : '0%' }"
                         />
                       </div>
-                      <span class="text-sm text-slate-400 w-10 text-right">{{
+                      <span class="text-sm text-slate-300 w-10 text-right">{{
                         i === 1 ? "100%" : "0%"
                       }}</span>
                     </div>
@@ -389,21 +422,21 @@
                     <div
                       v-for="(review, index) in displayedReviews"
                       :key="index"
-                      class="bg-slate-700/50 rounded-lg p-3 lg:p-4"
+                      class="bg-gradient-to-br from-slate-700/50 via-indigo-900/20 to-purple-900/20 backdrop-blur-sm rounded-lg p-3 lg:p-4 border border-slate-600/30 shadow-lg"
                     >
                       <div class="flex items-start space-x-2 lg:space-x-3">
                         <div
-                          class="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0"
+                          class="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/30"
                         >
                           <span
-                            class="text-white text-xs lg:text-sm font-bold"
+                            class="text-slate-900 text-xs lg:text-sm font-bold"
                             >{{ review.username[0] }}</span
                           >
                         </div>
                         <div class="flex-1">
                           <div class="space-y-1">
                             <span
-                              class="text-white font-medium block text-sm lg:text-base"
+                              class="text-white font-medium block text-sm lg:text-base drop-shadow-md"
                               >{{ review.username }}</span
                             >
                             <div class="flex text-amber-400">
@@ -411,7 +444,7 @@
                                 v-for="i in review.rating"
                                 :key="i"
                                 name="heroicons:star-solid"
-                                class="h-3 w-3 lg:h-4 lg:w-4"
+                                class="h-3 w-3 lg:h-4 lg:w-4 drop-shadow-lg"
                               />
                               <Icon
                                 v-for="i in 5 - review.rating"
@@ -422,7 +455,7 @@
                             </div>
                           </div>
                           <p
-                            class="text-slate-300 text-xs lg:text-sm mt-2 lg:mt-3"
+                            class="text-slate-200 text-xs lg:text-sm mt-2 lg:mt-3"
                           >
                             {{ review.comment }}
                           </p>
@@ -435,7 +468,7 @@
                     class="text-center"
                   >
                     <button
-                      class="px-4 py-2 lg:px-6 lg:py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs lg:text-sm font-medium transition-colors"
+                      class="px-4 py-2 lg:px-6 lg:py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg text-xs lg:text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                       @click="loadMoreReviews"
                     >
                       Load More Reviews
@@ -460,14 +493,14 @@
       </main>
 
       <footer
-        class="bg-slate-800/50 backdrop-blur-sm border-t border-slate-700 mt-8 lg:mt-16 relative overflow-hidden"
+        class="bg-gradient-to-r from-indigo-900/80 via-slate-800/80 to-purple-900/80 backdrop-blur-md border-t border-amber-400/30 mt-8 lg:mt-16 relative overflow-hidden shadow-2xl shadow-purple-900/20"
       >
         <!-- 背景装饰元素 -->
         <div
-          class="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 rounded-full -translate-y-16"
+          class="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-full -translate-y-16 blur-xl"
         ></div>
         <div
-          class="absolute bottom-0 right-1/4 w-40 h-40 bg-gradient-to-tl from-amber-500/10 to-pink-500/10 rounded-full translate-y-20"
+          class="absolute bottom-0 right-1/4 w-40 h-40 bg-gradient-to-tl from-blue-400/20 to-purple-500/20 rounded-full translate-y-20 blur-xl"
         ></div>
 
         <div class="container mx-auto px-3 lg:px-8 py-6 lg:py-12 relative z-10">
@@ -476,9 +509,13 @@
             <!-- 品牌信息 -->
             <div>
               <div class="flex items-center mb-4">
-                <img src="/logo.png" alt="Logo" class="h-16 w-auto" />
+                <img
+                  src="/logo.png"
+                  alt="Logo"
+                  class="h-16 w-auto drop-shadow-lg"
+                />
               </div>
-              <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+              <p class="text-sm text-slate-200 mb-6 leading-relaxed">
                 Your trusted partner for instant game top-ups. Fast, secure, and
                 reliable service for all your gaming needs.
               </p>
@@ -487,41 +524,41 @@
               <div class="flex space-x-4">
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-cyan-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-cyan-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-blue-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:twitter"
-                      class="h-5 w-5 text-slate-400 group-hover:text-cyan-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-blue-300"
                     />
                   </div>
                 </a>
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-purple-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-purple-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-purple-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:discord"
-                      class="h-5 w-5 text-slate-400 group-hover:text-purple-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-purple-300"
                     />
                   </div>
                 </a>
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-red-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-red-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-red-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:youtube"
-                      class="h-5 w-5 text-slate-400 group-hover:text-red-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-red-300"
                     />
                   </div>
                 </a>
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-pink-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-pink-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-pink-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-pink-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:instagram"
-                      class="h-5 w-5 text-slate-400 group-hover:text-pink-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-pink-300"
                     />
                   </div>
                 </a>
@@ -533,11 +570,11 @@
               <!-- 支持 -->
               <div class="text-center lg:text-left">
                 <h4
-                  class="font-bold text-white mb-3 justify-center lg:justify-normal text-sm flex items-center"
+                  class="font-bold text-white mb-3 justify-center lg:justify-normal text-sm flex items-center drop-shadow-md"
                 >
                   <Icon
                     name="heroicons:lifebuoy"
-                    class="h-4 w-4 text-purple-400 mr-2 flex-shrink-0"
+                    class="h-4 w-4 text-blue-400 mr-2 flex-shrink-0"
                   />
                   Support
                 </h4>
@@ -545,7 +582,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Help Center
                     </a>
@@ -553,7 +590,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Contact Us
                     </a>
@@ -561,7 +598,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Live Chat
                     </a>
@@ -569,7 +606,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Order Status
                     </a>
@@ -577,7 +614,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Refund Policy
                     </a>
@@ -588,7 +625,7 @@
               <!-- 法律与安全 -->
               <div class="text-center lg:text-left">
                 <h4
-                  class="font-bold text-white mb-3 text-sm justify-center lg:justify-normal flex items-center"
+                  class="font-bold text-white mb-3 text-sm justify-center lg:justify-normal flex items-center drop-shadow-md"
                 >
                   <Icon
                     name="heroicons:shield-check"
@@ -600,7 +637,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Terms of Service
                     </a>
@@ -608,7 +645,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Privacy Policy
                     </a>
@@ -616,7 +653,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Cookie Policy
                     </a>
@@ -624,7 +661,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Security Center
                     </a>
@@ -632,7 +669,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Trust & Safety
                     </a>
@@ -647,9 +684,13 @@
             <!-- 品牌信息 -->
             <div class="lg:max-w-[500px]">
               <div class="flex items-center mb-6">
-                <img src="/logo.png" alt="Logo" class="h-20 w-auto" />
+                <img
+                  src="/logo.png"
+                  alt="Logo"
+                  class="h-20 w-auto drop-shadow-lg"
+                />
               </div>
-              <p class="text-base text-slate-300 mb-6 leading-relaxed">
+              <p class="text-base text-slate-200 mb-6 leading-relaxed">
                 Your trusted partner for instant game top-ups. Fast, secure, and
                 reliable service for all your gaming needs.
               </p>
@@ -658,41 +699,41 @@
               <div class="flex space-x-4">
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-cyan-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-cyan-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-blue-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:twitter"
-                      class="h-5 w-5 text-slate-400 group-hover:text-cyan-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-blue-300"
                     />
                   </div>
                 </a>
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-purple-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-purple-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-purple-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:discord"
-                      class="h-5 w-5 text-slate-400 group-hover:text-purple-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-purple-300"
                     />
                   </div>
                 </a>
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-red-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-red-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-red-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-red-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:youtube"
-                      class="h-5 w-5 text-slate-400 group-hover:text-red-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-red-300"
                     />
                   </div>
                 </a>
                 <a href="#" class="group">
                   <div
-                    class="w-10 h-10 bg-slate-700/50 hover:bg-pink-500/20 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:shadow-lg group-hover:shadow-pink-500/25"
+                    class="w-10 h-10 bg-slate-700/50 hover:bg-pink-500/30 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-pink-500/30 group-hover:scale-110 backdrop-blur-sm border border-slate-600/30"
                   >
                     <Icon
                       name="fa-brands:instagram"
-                      class="h-5 w-5 text-slate-400 group-hover:text-pink-400"
+                      class="h-5 w-5 text-slate-300 group-hover:text-pink-300"
                     />
                   </div>
                 </a>
@@ -704,11 +745,11 @@
               <!-- 支持 -->
               <div>
                 <h4
-                  class="font-bold text-white mb-4 text-base flex items-center"
+                  class="font-bold text-white mb-4 text-base flex items-center drop-shadow-md"
                 >
                   <Icon
                     name="heroicons:lifebuoy"
-                    class="h-5 w-5 text-purple-400 mr-2 flex-shrink-0"
+                    class="h-5 w-5 text-blue-400 mr-2 flex-shrink-0"
                   />
                   Support
                 </h4>
@@ -716,7 +757,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Help Center
                     </a>
@@ -724,7 +765,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Contact Us
                     </a>
@@ -732,7 +773,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Live Chat
                     </a>
@@ -740,7 +781,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Order Status
                     </a>
@@ -748,7 +789,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-purple-400 transition-colors"
+                      class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
                       Refund Policy
                     </a>
@@ -759,7 +800,7 @@
               <!-- 法律与安全 -->
               <div>
                 <h4
-                  class="font-bold text-white mb-4 text-base flex items-center"
+                  class="font-bold text-white mb-4 text-base flex items-center drop-shadow-md"
                 >
                   <Icon
                     name="heroicons:shield-check"
@@ -771,7 +812,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Terms of Service
                     </a>
@@ -779,7 +820,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Privacy Policy
                     </a>
@@ -787,7 +828,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Cookie Policy
                     </a>
@@ -795,7 +836,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Security Center
                     </a>
@@ -803,7 +844,7 @@
                   <li>
                     <a
                       href="#"
-                      class="text-slate-300 hover:text-amber-400 transition-colors"
+                      class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
                       Trust & Safety
                     </a>
@@ -814,18 +855,18 @@
           </div>
 
           <!-- 支付方式 -->
-          <div class="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-slate-700/50">
+          <div class="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-slate-600/50">
             <div
               class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-6 lg:space-y-0"
             >
               <!-- 支付方式 -->
               <div class="text-center lg:text-left">
                 <h5
-                  class="text-sm font-medium text-slate-300 mb-3 flex items-center justify-center lg:justify-start"
+                  class="text-sm font-medium text-slate-200 mb-3 flex items-center justify-center lg:justify-start drop-shadow-md"
                 >
                   <Icon
                     name="heroicons:credit-card"
-                    class="h-4 w-4 text-green-400 mr-2"
+                    class="h-4 w-4 text-emerald-400 mr-2"
                   />
                   Secure Payment Methods
                 </h5>
@@ -833,7 +874,7 @@
                   class="flex flex-wrap gap-3 justify-center lg:justify-start"
                 >
                   <div
-                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                    class="bg-slate-700/40 hover:bg-slate-600/60 rounded-lg p-2 lg:p-3 transition-all duration-300 border border-slate-600/40 hover:border-slate-500/60 backdrop-blur-sm hover:scale-105 shadow-lg"
                   >
                     <Icon
                       name="fa-brands:paypal"
@@ -841,7 +882,7 @@
                     />
                   </div>
                   <div
-                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                    class="bg-slate-700/40 hover:bg-slate-600/60 rounded-lg p-2 lg:p-3 transition-all duration-300 border border-slate-600/40 hover:border-slate-500/60 backdrop-blur-sm hover:scale-105 shadow-lg"
                   >
                     <Icon
                       name="fa-brands:cc-visa"
@@ -849,7 +890,7 @@
                     />
                   </div>
                   <div
-                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                    class="bg-slate-700/40 hover:bg-slate-600/60 rounded-lg p-2 lg:p-3 transition-all duration-300 border border-slate-600/40 hover:border-slate-500/60 backdrop-blur-sm hover:scale-105 shadow-lg"
                   >
                     <Icon
                       name="fa-brands:cc-mastercard"
@@ -857,7 +898,7 @@
                     />
                   </div>
                   <div
-                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                    class="bg-slate-700/40 hover:bg-slate-600/60 rounded-lg p-2 lg:p-3 transition-all duration-300 border border-slate-600/40 hover:border-slate-500/60 backdrop-blur-sm hover:scale-105 shadow-lg"
                   >
                     <Icon
                       name="fa-brands:google-pay"
@@ -865,7 +906,7 @@
                     />
                   </div>
                   <div
-                    class="bg-slate-700/30 hover:bg-slate-700/50 rounded-lg p-2 lg:p-3 transition-all duration-200 border border-slate-600/30 hover:border-slate-500/50"
+                    class="bg-slate-700/40 hover:bg-slate-600/60 rounded-lg p-2 lg:p-3 transition-all duration-300 border border-slate-600/40 hover:border-slate-500/60 backdrop-blur-sm hover:scale-105 shadow-lg"
                   >
                     <Icon
                       name="fa-brands:apple-pay"
@@ -880,33 +921,41 @@
                 class="flex items-center justify-center lg:justify-end space-x-6 lg:space-x-8"
               >
                 <div class="text-center">
-                  <p class="text-lg lg:text-xl font-bold text-cyan-400">1M+</p>
-                  <p class="text-xs text-slate-400">Happy Customers</p>
+                  <p
+                    class="text-lg lg:text-xl font-bold text-blue-400 drop-shadow-lg"
+                  >
+                    1M+
+                  </p>
+                  <p class="text-xs text-slate-300">Happy Customers</p>
                 </div>
                 <div class="text-center">
-                  <p class="text-lg lg:text-xl font-bold text-purple-400">
+                  <p
+                    class="text-lg lg:text-xl font-bold text-purple-400 drop-shadow-lg"
+                  >
                     24/7
                   </p>
-                  <p class="text-xs text-slate-400">Support</p>
+                  <p class="text-xs text-slate-300">Support</p>
                 </div>
                 <div class="text-center">
-                  <p class="text-lg lg:text-xl font-bold text-amber-400">
+                  <p
+                    class="text-lg lg:text-xl font-bold text-amber-400 drop-shadow-lg"
+                  >
                     99.9%
                   </p>
-                  <p class="text-xs text-slate-400">Uptime</p>
+                  <p class="text-xs text-slate-300">Uptime</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- 版权信息 -->
-          <div class="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-slate-700/50">
+          <div class="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-slate-600/50">
             <div class="text-center">
-              <p class="text-xs lg:text-sm text-slate-400">
+              <p class="text-xs lg:text-sm text-slate-300">
                 &copy; {{ new Date().getFullYear() }} HSRTopUp. All rights
                 reserved.
               </p>
-              <p class="text-xs text-slate-500 mt-1">
+              <p class="text-xs text-slate-400 mt-1">
                 Not affiliated with HoYoverse. All trademarks belong to their
                 respective owners.
               </p>
@@ -1035,13 +1084,7 @@ const products = ref([
       "https://shop.ldrescdn.com/rms/ld-space/process/img/0e08889165be4b529ca621d959fa5ba41753086149.webp",
     bonus: "×10",
   },
-  {
-    name: "Express Supply Pass × 3",
-    price: "12.99",
-    image:
-      "https://shop.ldrescdn.com/rms/ld-space/process/img/b275f9ea85834945881096707d8b11861745484117.webp",
-    bonus: "×3",
-  },
+
   {
     name: "Express Supply Pass × 5",
     price: "19.99",
