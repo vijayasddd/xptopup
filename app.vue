@@ -1,343 +1,461 @@
 <template>
-  <div class="antialiased bg-slate-900 text-slate-200 font-sans">
-    <header
-      class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50"
-    >
-      <nav
-        class="container mx-auto px-4 lg:px-8 flex items-center justify-between h-20"
+  <div class="antialiased bg-slate-900 text-slate-200 font-sans relative">
+    <!-- 固定背景层 -->
+    <div
+      class="fixed inset-0 z-0"
+      style="
+        background-image: url('/background.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        filter: blur(3px);
+        opacity: 0.2;
+      "
+    />
+
+    <!-- 毛玻璃遮罩层 -->
+    <div class="fixed inset-0 z-10 backdrop-blur-sm bg-slate-900/40" />
+
+    <!-- 原有内容，添加相对定位确保在背景之上 -->
+    <div class="relative z-20">
+      <header
+        class="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50"
       >
-        <div class="flex items-center space-x-8">
-          <div class="flex items-center space-x-2">
-            <Icon name="heroicons:star" class="h-8 w-8 text-cyan-400" />
-            <span class="text-2xl font-bold text-white">StellarShop</span>
+        <nav
+          class="container mx-auto px-3 lg:px-8 flex items-center justify-between h-16 lg:h-20"
+        >
+          <div class="flex items-center space-x-8">
+            <div class="flex items-center">
+              <img src="/logo.png" alt="Logo" class="h-14 lg:h-20 w-auto" />
+            </div>
           </div>
-        </div>
-        <div class="flex items-center space-x-4">
-          <div class="hidden md:flex items-center space-x-4">
-            <button
-              class="flex items-center space-x-1 text-sm text-slate-300 hover:text-white"
+          <div
+            class="flex flex-col lg:flex-row items-end lg:items-center space-y-1 lg:space-y-0 lg:space-x-4"
+          >
+            <!-- 语言货币选择 -->
+            <div class="flex items-center">
+              <button
+                class="flex items-center space-x-1 text-xs lg:text-sm text-slate-300 hover:text-white"
+                @click="showLanguageCurrencyModal = true"
+              >
+                <Icon
+                  name="heroicons:language"
+                  class="h-3 w-3 lg:h-5 lg:w-5 text-cyan-400"
+                />
+                <span>{{ currentLanguage.toUpperCase() }}</span
+                ><span>/</span><span>{{ currentCurrency }}</span>
+                <Icon
+                  name="heroicons:chevron-down"
+                  class="h-2 w-2 lg:h-4 lg:w-4"
+                />
+              </button>
+            </div>
+
+            <!-- 登录和订单 -->
+            <div class="flex items-center space-x-2 lg:space-x-4">
+              <!-- 订单按钮 -->
+              <button
+                class="text-slate-300 flex items-center space-x-1 lg:space-x-2 hover:text-white"
+                @click="showOrderListModal = true"
+              >
+                <Icon
+                  name="heroicons:clipboard-document-list"
+                  class="h-3 w-3 lg:h-6 lg:w-6"
+                />
+                <span class="text-xs lg:text-sm font-medium">Orders</span>
+              </button>
+              <!-- 登录按钮 -->
+              <button
+                v-if="!isLoggedIn"
+                class="flex items-center space-x-1 lg:space-x-2 text-white px-2 py-1 lg:px-3 lg:py-1.5 rounded-lg text-xs lg:text-sm font-medium transition-all duration-200 hover:shadow-lg"
+                style="
+                  background: linear-gradient(
+                    89.92deg,
+                    rgb(228, 119, 255) 0.07%,
+                    rgb(147, 119, 255)
+                  );
+                "
+                @click="showAuthModal = true"
+              >
+                <Icon
+                  name="heroicons:user-circle"
+                  class="h-3 w-3 lg:h-5 lg:w-5"
+                />
+                <span>Login</span>
+              </button>
+
+              <!-- 用户头像（登录后） -->
+              <button
+                v-else
+                class="flex items-center space-x-1 lg:space-x-2 text-slate-300 hover:text-white"
+                @click="showUserMenu = !showUserMenu"
+              >
+                <div
+                  class="w-6 h-6 lg:w-8 lg:h-8 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full flex items-center justify-center"
+                >
+                  <span class="text-white text-xs lg:text-sm font-bold">{{
+                    userInitial
+                  }}</span>
+                </div>
+                <span class="text-xs lg:text-sm font-medium hidden lg:inline">{{
+                  userName
+                }}</span>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="container mx-auto px-3 lg:px-8 py-4 lg:py-8">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+          <div class="lg:col-span-2">
+            <div
+              class="bg-slate-800 rounded-xl p-3 lg:p-4 flex items-center space-x-3 lg:space-x-4 border border-slate-700"
             >
               <img
-                src="https://flagcdn.com/w20/us.png"
-                alt="USA Flag"
-                class="w-5 h-auto rounded-sm"
+                src="https://shop.ldrescdn.com/rms/ld-space/process/img/5ba76fd6bcce49d5a3f9e97c2c64b1691737079512.webp"
+                alt="Honkai Star Rail Icon"
+                class="w-16 h-16 lg:w-20 lg:h-20 rounded-lg"
               />
-              <span>EN</span><span>/</span><span>USD</span>
-              <Icon name="heroicons:chevron-down" class="h-4 w-4" />
-            </button>
-          </div>
-          <button
-            class="flex items-center space-x-2 text-slate-300 hover:text-white"
-            @click="showAuthModal = true"
-          >
-            <Icon name="heroicons:user-circle" class="h-6 w-6" />
-            <span class="text-sm font-medium">Login</span>
-          </button>
-          <button
-            class="text-slate-300 flex items-center space-x-2 hover:text-white"
-            @click="showOrderListModal = true"
-          >
-            <Icon name="heroicons:clipboard-document-list" class="h-6 w-6" />
-            <span class="text-sm font-medium">Orders</span>
-          </button>
-        </div>
-      </nav>
-    </header>
-
-    <main class="container mx-auto px-4 lg:px-8 py-8">
-      <div class="lg:grid lg:grid-cols-3 lg:gap-8">
-        <div class="lg:col-span-2">
-          <div
-            class="bg-slate-800 rounded-xl p-4 flex items-center space-x-4 border border-slate-700"
-          >
-            <img
-              src="https://shop.ldrescdn.com/rms/ld-space/process/img/5ba76fd6bcce49d5a3f9e97c2c64b1691737079512.webp"
-              alt="Honkai Star Rail Icon"
-              class="w-20 h-20 rounded-lg"
-            />
-            <div>
-              <h1 class="text-2xl font-bold text-white">Honkai: Star Rail</h1>
-              <p class="text-sm text-slate-400">Official Direct Top-Up</p>
-            </div>
-          </div>
-
-          <div class="mt-8">
-            <div
-              class="bg-cyan-900/30 border border-cyan-400/50 rounded-lg p-4 mb-6"
-            >
-              <h2 class="font-semibold text-white">
-                BONUS REFRESHED! 2X Oneiric Shards on First V3.2 Top-Up
-              </h2>
+              <div>
+                <h1 class="text-xl lg:text-2xl font-bold text-white">
+                  Honkai: Star Rail
+                </h1>
+                <p class="text-xs lg:text-sm text-slate-400">
+                  Official Direct Top-Up
+                </p>
+              </div>
             </div>
 
-            <div
-              class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
-            >
+            <div class="mt-4">
               <div
-                v-for="product in products"
-                :key="product.name"
-                :class="[
-                  'bg-slate-800 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 border-2 relative overflow-hidden',
-                  selectedProduct?.name === product.name
-                    ? 'border-cyan-400 shadow-lg shadow-cyan-500/20'
-                    : 'border-slate-700 hover:border-slate-600',
-                ]"
-                :style="{
-                  backgroundImage:
-                    'url(https://shop.ldrescdn.com/web_shop/static/sku-bg.Db9XNylV.png)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }"
-                @click="selectedProduct = product"
+                class="bg-cyan-900/30 border border-cyan-400/50 rounded-lg p-3 lg:p-4 mb-4 lg:mb-6"
               >
-                <!-- 背景遮罩层 -->
-                <div class="absolute inset-0 bg-slate-900/60" />
+                <h2 class="font-semibold text-white text-xs lg:text-sm">
+                  BONUS REFRESHED! 2X Oneiric Shards on First V3.2 Top-Up
+                </h2>
+              </div>
 
-                <!-- 内容层 -->
-                <div class="relative z-10">
-                  <div class="relative">
-                    <!-- 固定尺寸的图片容器 -->
-                    <div
-                      class="w-full h-24 mb-3 flex items-center justify-center bg-slate-700/20 rounded-md"
-                    >
-                      <img
-                        :src="product.image"
-                        :alt="product.name"
-                        class="max-w-full max-h-full object-contain rounded-md"
-                      />
+              <div
+                class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 lg:gap-4"
+              >
+                <div
+                  v-for="product in products"
+                  :key="product.name"
+                  :class="[
+                    'bg-slate-800 rounded-lg p-2 lg:p-3 text-center cursor-pointer transition-all duration-200 border-2 relative overflow-hidden',
+                    selectedProduct?.name === product.name
+                      ? 'border-cyan-400 shadow-lg shadow-cyan-500/20'
+                      : 'border-slate-700 hover:border-slate-600',
+                  ]"
+                  :style="{
+                    backgroundImage:
+                      'url(https://shop.ldrescdn.com/web_shop/static/sku-bg.Db9XNylV.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }"
+                  @click="selectedProduct = product"
+                >
+                  <!-- 背景遮罩层 -->
+                  <div class="absolute inset-0 bg-slate-900/60" />
+
+                  <!-- 内容层 -->
+                  <div class="relative z-10">
+                    <div class="relative">
+                      <!-- 固定尺寸的图片容器 -->
+                      <div
+                        class="w-full h-16 lg:h-24 mb-2 lg:mb-3 flex items-center justify-center bg-slate-700/20 rounded-md"
+                      >
+                        <img
+                          :src="product.image"
+                          :alt="product.name"
+                          class="max-w-full max-h-full object-contain rounded-md"
+                        />
+                      </div>
+                      <div
+                        v-if="product.bonus"
+                        class="absolute top-0.5 right-0.5 lg:top-1 lg:right-1 bg-amber-400 text-slate-900 text-xs font-bold px-1 py-0.5 lg:px-1.5 lg:py-0.5 rounded-full shadow-md"
+                      >
+                        {{ product.bonus }}
+                      </div>
                     </div>
-                    <div
-                      v-if="product.bonus"
-                      class="absolute top-1 right-1 bg-amber-400 text-slate-900 text-xs font-bold px-1.5 py-0.5 rounded-full shadow-md"
+                    <!-- 固定2行高度的商品名称 -->
+                    <h3
+                      class="font-semibold text-xs lg:text-sm text-white h-8 lg:h-10 flex items-start leading-4 lg:leading-5 mb-1 lg:mb-2"
                     >
-                      {{ product.bonus }}
+                      <span class="line-clamp-2">{{ product.name }}</span>
+                    </h3>
+                    <p
+                      class="text-amber-400 font-bold text-xs lg:text-base mt-1"
+                    >
+                      ${{ product.price }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 移动端充值表单 - 只在小屏幕显示 -->
+            <div class="mt-4 lg:hidden">
+              <TopUpForm
+                v-model:selected-server="selectedServer"
+                v-model:uid="uid"
+                :selected-product="selectedProduct"
+                :is-mobile="true"
+                @show-order-modal="showOrderModal = true"
+              />
+            </div>
+
+            <div class="mt-6 lg:mt-12 space-y-4 lg:space-y-8">
+              <div
+                class="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700"
+              >
+                <h2
+                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4"
+                >
+                  Description
+                </h2>
+                <div
+                  class="text-slate-300 space-y-2 lg:space-y-3 text-sm leading-relaxed"
+                >
+                  <p>Buy Cheap Honkai: Star Rail Top Up - Fast & Safe</p>
+                  <p>
+                    Easy and fast to top up your Honkai: Star Rail account! Just
+                    enter your UID, select your server, choose the value you
+                    want to purchase, complete the payment, and the Oneiric
+                    Shard or Express Supply Pass will be added to your account
+                    immediately.
+                  </p>
+                  <p>
+                    Pay with convenience using PayPal, Razer Gold, or your
+                    preferred local payment methods. There's no registration or
+                    login required, making your purchase experience as seamless
+                    as possible.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700"
+              >
+                <h2
+                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4"
+                >
+                  FAQs
+                </h2>
+                <div class="space-y-3 lg:space-y-4">
+                  <div v-for="faq in faqs" :key="faq.q" class="text-sm">
+                    <p class="font-semibold text-cyan-400 mb-1">{{ faq.q }}</p>
+                    <p class="text-slate-300">{{ faq.a }}</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="bg-slate-800 rounded-xl p-4 lg:p-6 border border-slate-700"
+              >
+                <h2
+                  class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4"
+                >
+                  User Reviews
+                </h2>
+                <div class="space-y-4 lg:space-y-6">
+                  <div class="text-center">
+                    <p class="text-4xl lg:text-5xl font-bold text-white">5.0</p>
+                    <div
+                      class="flex justify-center text-amber-400 text-lg lg:text-xl mt-2"
+                    >
+                      <Icon name="heroicons:star-solid" />
+                      <Icon name="heroicons:star-solid" />
+                      <Icon name="heroicons:star-solid" />
+                      <Icon name="heroicons:star-solid" />
+                      <Icon name="heroicons:star-solid" />
+                    </div>
+                    <p class="text-xs lg:text-sm text-slate-400 mt-1">
+                      100k+ reviews
+                    </p>
+                  </div>
+                  <div class="max-w-2xl mx-auto">
+                    <div
+                      v-for="i in 5"
+                      :key="i"
+                      class="flex items-center space-x-2 mb-1"
+                    >
+                      <span class="text-sm text-amber-400 w-6">{{
+                        6 - i
+                      }}</span>
+                      <Icon
+                        name="heroicons:star-solid"
+                        class="h-3 w-3 text-amber-400"
+                      />
+                      <div class="w-full bg-slate-700 rounded-full h-2">
+                        <div
+                          class="bg-amber-400 h-2 rounded-full"
+                          :style="{ width: i === 1 ? '100%' : '0%' }"
+                        />
+                      </div>
+                      <span class="text-sm text-slate-400 w-10 text-right">{{
+                        i === 1 ? "100%" : "0%"
+                      }}</span>
                     </div>
                   </div>
-                  <!-- 固定2行高度的商品名称 -->
-                  <h3
-                    class="font-semibold text-sm text-white h-10 flex items-start leading-5 mb-2"
+                  <div class="space-y-3 lg:space-y-4">
+                    <div
+                      v-for="(review, index) in displayedReviews"
+                      :key="index"
+                      class="bg-slate-700/50 rounded-lg p-3 lg:p-4"
+                    >
+                      <div class="flex items-start space-x-2 lg:space-x-3">
+                        <div
+                          class="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0"
+                        >
+                          <span
+                            class="text-white text-xs lg:text-sm font-bold"
+                            >{{ review.username[0] }}</span
+                          >
+                        </div>
+                        <div class="flex-1">
+                          <div class="space-y-1">
+                            <span
+                              class="text-white font-medium block text-sm lg:text-base"
+                              >{{ review.username }}</span
+                            >
+                            <div class="flex text-amber-400">
+                              <Icon
+                                v-for="i in review.rating"
+                                :key="i"
+                                name="heroicons:star-solid"
+                                class="h-3 w-3 lg:h-4 lg:w-4"
+                              />
+                              <Icon
+                                v-for="i in 5 - review.rating"
+                                :key="i"
+                                name="heroicons:star"
+                                class="h-3 w-3 lg:h-4 lg:w-4"
+                              />
+                            </div>
+                          </div>
+                          <p
+                            class="text-slate-300 text-xs lg:text-sm mt-2 lg:mt-3"
+                          >
+                            {{ review.comment }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    v-if="reviews.length > displayedReviews.length"
+                    class="text-center"
                   >
-                    <span class="line-clamp-2">{{ product.name }}</span>
-                  </h3>
-                  <p class="text-amber-400 font-bold mt-1">
-                    ${{ product.price }}
-                  </p>
+                    <button
+                      class="px-4 py-2 lg:px-6 lg:py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs lg:text-sm font-medium transition-colors"
+                      @click="loadMoreReviews"
+                    >
+                      Load More Reviews
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 移动端充值表单 - 只在小屏幕显示 -->
-          <div class="mt-8 lg:hidden">
+          <!-- PC端充值表单 - 只在大屏幕显示 -->
+          <div class="hidden lg:block lg:col-span-1">
             <TopUpForm
               v-model:selected-server="selectedServer"
               v-model:uid="uid"
               :selected-product="selectedProduct"
-              :is-mobile="true"
+              :is-mobile="false"
               @show-order-modal="showOrderModal = true"
             />
           </div>
+        </div>
+      </main>
 
-          <div class="mt-12 space-y-8">
-            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
-              <h2 class="text-xl font-bold text-white mb-4">Description</h2>
-              <div class="text-slate-300 space-y-3 text-sm leading-relaxed">
-                <p>Buy Cheap Honkai: Star Rail Top Up - Fast & Safe</p>
-                <p>
-                  Easy and fast to top up your Honkai: Star Rail account! Just
-                  enter your UID, select your server, choose the value you want
-                  to purchase, complete the payment, and the Oneiric Shard or
-                  Express Supply Pass will be added to your account immediately.
-                </p>
-                <p>
-                  Pay with convenience using PayPal, Razer Gold, or your
-                  preferred local payment methods. There's no registration or
-                  login required, making your purchase experience as seamless as
-                  possible.
-                </p>
+      <footer class="bg-slate-800/50 border-t border-slate-700 mt-8 lg:mt-16">
+        <div class="container mx-auto px-3 lg:px-8 py-6 lg:py-10">
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-8"
+          >
+            <div class="col-span-2 lg:col-span-2">
+              <div class="flex items-center mb-3 lg:mb-4">
+                <img src="/logo.png" alt="Logo" class="h-16 lg:h-20 w-auto" />
               </div>
+              <p class="text-xs lg:text-sm text-slate-400">
+                Your one-stop shop for instant game top-ups.
+              </p>
             </div>
-            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
-              <h2 class="text-xl font-bold text-white mb-4">FAQs</h2>
-              <div class="space-y-4">
-                <div v-for="faq in faqs" :key="faq.q" class="text-sm">
-                  <p class="font-semibold text-cyan-400 mb-1">{{ faq.q }}</p>
-                  <p class="text-slate-300">{{ faq.a }}</p>
-                </div>
-              </div>
+            <div>
+              <h4
+                class="font-bold text-white mb-2 lg:mb-3 text-sm lg:text-base"
+              >
+                Support
+              </h4>
+              <ul
+                class="space-y-1 lg:space-y-2 text-xs lg:text-sm text-slate-300"
+              >
+                <li><a href="#" class="hover:text-cyan-400">Help Center</a></li>
+                <li><a href="#" class="hover:text-cyan-400">Contact Us</a></li>
+              </ul>
             </div>
-            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
-              <h2 class="text-xl font-bold text-white mb-4">User Reviews</h2>
-              <div class="space-y-6">
-                <div class="text-center">
-                  <p class="text-5xl font-bold text-white">5.0</p>
-                  <div class="flex justify-center text-amber-400 text-xl mt-2">
-                    <Icon name="heroicons:star-solid" />
-                    <Icon name="heroicons:star-solid" />
-                    <Icon name="heroicons:star-solid" />
-                    <Icon name="heroicons:star-solid" />
-                    <Icon name="heroicons:star-solid" />
-                  </div>
-                  <p class="text-sm text-slate-400 mt-1">100k+ reviews</p>
-                </div>
-                <div class="max-w-2xl mx-auto">
-                  <div
-                    v-for="i in 5"
-                    :key="i"
-                    class="flex items-center space-x-2 mb-1"
-                  >
-                    <span class="text-sm text-amber-400 w-6">{{ 6 - i }}</span>
-                    <Icon
-                      name="heroicons:star-solid"
-                      class="h-3 w-3 text-amber-400"
-                    />
-                    <div class="w-full bg-slate-700 rounded-full h-2">
-                      <div
-                        class="bg-amber-400 h-2 rounded-full"
-                        :style="{ width: i === 1 ? '100%' : '0%' }"
-                      />
-                    </div>
-                    <span class="text-sm text-slate-400 w-10 text-right">{{
-                      i === 1 ? "100%" : "0%"
-                    }}</span>
-                  </div>
-                </div>
-                <div class="space-y-4">
-                  <div
-                    v-for="(review, index) in displayedReviews"
-                    :key="index"
-                    class="bg-slate-700/50 rounded-lg p-4"
-                  >
-                    <div class="flex items-start space-x-3">
-                      <div
-                        class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-full flex items-center justify-center flex-shrink-0"
-                      >
-                        <span class="text-white text-sm font-bold">{{
-                          review.username[0]
-                        }}</span>
-                      </div>
-                      <div class="flex-1">
-                        <div class="space-y-1">
-                          <span class="text-white font-medium block">{{
-                            review.username
-                          }}</span>
-                          <div class="flex text-amber-400">
-                            <Icon
-                              v-for="i in review.rating"
-                              :key="i"
-                              name="heroicons:star-solid"
-                              class="h-4 w-4"
-                            />
-                            <Icon
-                              v-for="i in 5 - review.rating"
-                              :key="i"
-                              name="heroicons:star"
-                              class="h-4 w-4"
-                            />
-                          </div>
-                        </div>
-                        <p class="text-slate-300 text-sm mt-3">
-                          {{ review.comment }}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  v-if="reviews.length > displayedReviews.length"
-                  class="text-center"
-                >
-                  <button
-                    class="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-sm font-medium transition-colors"
-                    @click="loadMoreReviews"
-                  >
-                    Load More Reviews
-                  </button>
+            <div>
+              <h4
+                class="font-bold text-white mb-2 lg:mb-3 text-sm lg:text-base"
+              >
+                Legal
+              </h4>
+              <ul
+                class="space-y-1 lg:space-y-2 text-xs lg:text-sm text-slate-300"
+              >
+                <li>
+                  <a href="#" class="hover:text-cyan-400">Terms of Service</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:text-cyan-400">Privacy Policy</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-span-2 md:col-span-2">
+              <h4
+                class="font-bold text-white mb-2 lg:mb-3 text-sm lg:text-base"
+              >
+                Download App
+              </h4>
+              <div class="flex items-center space-x-3 lg:space-x-4">
+                <img
+                  src="https://placehold.co/100x100/e2e8f0/0f172a?text=QR"
+                  alt="QR Code"
+                  class="w-20 h-20 lg:w-24 lg:h-24 rounded-lg bg-white p-1"
+                />
+                <div class="space-y-1 lg:space-y-2">
+                  <a href="#" class="block"
+                    ><img
+                      src="https://placehold.co/120x40/0f172a/e2e8f0?text=Google+Play"
+                      alt="Google Play"
+                      class="h-8 lg:h-10"
+                  /></a>
+                  <a href="#" class="block"
+                    ><img
+                      src="https://placehold.co/120x40/0f172a/e2e8f0?text=App+Store"
+                      alt="App Store"
+                      class="h-8 lg:h-10"
+                  /></a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- PC端充值表单 - 只在大屏幕显示 -->
-        <div class="hidden lg:block lg:col-span-1">
-          <TopUpForm
-            v-model:selected-server="selectedServer"
-            v-model:uid="uid"
-            :selected-product="selectedProduct"
-            :is-mobile="false"
-            @show-order-modal="showOrderModal = true"
-          />
-        </div>
-      </div>
-    </main>
-
-    <footer class="bg-slate-800/50 border-t border-slate-700 mt-16">
-      <div class="container mx-auto px-4 lg:px-8 py-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-          <div class="col-span-2 lg:col-span-2">
-            <div class="flex items-center space-x-2 mb-4">
-              <Icon name="heroicons:star" class="h-8 w-8 text-cyan-400" />
-              <span class="text-2xl font-bold text-white">StellarShop</span>
-            </div>
-            <p class="text-sm text-slate-400">
-              Your one-stop shop for instant game top-ups.
+          <div
+            class="mt-6 lg:mt-8 pt-4 lg:pt-6 border-t border-slate-700 text-center text-xs lg:text-sm text-slate-500"
+          >
+            <p>
+              &copy; {{ new Date().getFullYear() }} HSRTopUp. All rights
+              reserved. Not affiliated with HoYoverse.
             </p>
           </div>
-          <div>
-            <h4 class="font-bold text-white mb-3">Support</h4>
-            <ul class="space-y-2 text-sm text-slate-300">
-              <li><a href="#" class="hover:text-cyan-400">Help Center</a></li>
-              <li><a href="#" class="hover:text-cyan-400">Contact Us</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-bold text-white mb-3">Legal</h4>
-            <ul class="space-y-2 text-sm text-slate-300">
-              <li>
-                <a href="#" class="hover:text-cyan-400">Terms of Service</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-cyan-400">Privacy Policy</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-span-2 md:col-span-2">
-            <h4 class="font-bold text-white mb-3">Download App</h4>
-            <div class="flex items-center space-x-4">
-              <img
-                src="https://placehold.co/100x100/e2e8f0/0f172a?text=QR"
-                alt="QR Code"
-                class="w-24 h-24 rounded-lg bg-white p-1"
-              />
-              <div class="space-y-2">
-                <a href="#" class="block"
-                  ><img
-                    src="https://placehold.co/120x40/0f172a/e2e8f0?text=Google+Play"
-                    alt="Google Play"
-                    class="h-10"
-                /></a>
-                <a href="#" class="block"
-                  ><img
-                    src="https://placehold.co/120x40/0f172a/e2e8f0?text=App+Store"
-                    alt="App Store"
-                    class="h-10"
-                /></a>
-              </div>
-            </div>
-          </div>
         </div>
-        <div
-          class="mt-8 pt-6 border-t border-slate-700 text-center text-sm text-slate-500"
-        >
-          <p>
-            &copy; {{ new Date().getFullYear() }} StellarShop. All rights
-            reserved. Not affiliated with HoYoverse.
-          </p>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
 
     <!-- 弹窗组件 -->
     <AuthModal
@@ -345,6 +463,14 @@
       @close="showAuthModal = false"
       @auth="handleAuth"
       @google-auth="handleGoogleAuth"
+    />
+
+    <LanguageCurrencyModal
+      :show="showLanguageCurrencyModal"
+      :initial-language="currentLanguage"
+      :initial-currency="currentCurrency"
+      @close="showLanguageCurrencyModal = false"
+      @change="handleLanguageCurrencyChange"
     />
 
     <OrderModal
@@ -367,6 +493,7 @@
 <script setup>
 import { computed, ref } from "vue";
 import AuthModal from "~/components/AuthModal.vue";
+import LanguageCurrencyModal from "~/components/LanguageCurrencyModal.vue";
 import OrderListModal from "~/components/OrderListModal.vue";
 import OrderModal from "~/components/OrderModal.vue";
 import TopUpForm from "~/components/TopUpForm.vue";
@@ -489,6 +616,16 @@ const products = ref([
 const selectedProduct = ref(products.value[3]);
 const selectedServer = ref("America");
 const uid = ref("");
+
+// Language and Currency settings
+const currentLanguage = ref("en");
+const currentCurrency = ref("USD");
+
+// User authentication state
+const isLoggedIn = ref(false);
+const userName = ref("User");
+const userInitial = computed(() => userName.value.charAt(0).toUpperCase());
+const showUserMenu = ref(false);
 
 const faqs = ref([
   {
@@ -621,6 +758,7 @@ const displayedReviews = computed(() =>
 
 // Modal states
 const showAuthModal = ref(false);
+const showLanguageCurrencyModal = ref(false);
 const showOrderModal = ref(false);
 const showOrderListModal = ref(false);
 
@@ -733,6 +871,11 @@ const loadMoreReviews = () => {
 const handleAuth = (authData) => {
   // Handle login/register logic here
   console.log("Auth form submitted:", authData);
+
+  // 模拟登录成功
+  isLoggedIn.value = true;
+  userName.value = authData.email?.split("@")[0] || "User";
+
   showAuthModal.value = false;
 };
 
@@ -748,6 +891,23 @@ const processOrder = (orderData) => {
   showOrderModal.value = false;
   // Show success message or redirect to payment
 };
+
+const handleLanguageCurrencyChange = (settings) => {
+  currentLanguage.value = settings.language;
+  currentCurrency.value = settings.currency;
+  console.log("Language and currency updated:", settings);
+  // Here you could save to localStorage or send to server
+  localStorage.setItem("preferredLanguage", settings.language);
+  localStorage.setItem("preferredCurrency", settings.currency);
+};
+
+// Initialize language and currency from localStorage
+if (typeof window !== "undefined") {
+  const savedLanguage = localStorage.getItem("preferredLanguage");
+  const savedCurrency = localStorage.getItem("preferredCurrency");
+  if (savedLanguage) currentLanguage.value = savedLanguage;
+  if (savedCurrency) currentCurrency.value = savedCurrency;
+}
 </script>
 
 <style>
