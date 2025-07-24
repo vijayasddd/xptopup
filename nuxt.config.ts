@@ -12,9 +12,12 @@ export default defineNuxtConfig({
 
   i18n: {
     defaultLocale: "en",
-    strategy: "prefix_except_default",
-    langDir: "locales",
-    lazy: true,
+    strategy: "no_prefix",
+    detectBrowserLanguage: false, // 使用自定义插件进行检测
+    compilation: {
+      strictMessage: false,
+      escapeHtml: false,
+    },
     locales: [
       {
         code: "en",
@@ -55,4 +58,6 @@ export default defineNuxtConfig({
     ],
     vueI18n: "./i18n.config.ts",
   },
+
+  ssr: true,
 });

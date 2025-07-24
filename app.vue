@@ -979,7 +979,6 @@
 
     <LanguageCurrencyModal
       :show="showLanguageCurrencyModal"
-      :initial-language="currentLanguage"
       :initial-currency="currentCurrency"
       @close="showLanguageCurrencyModal = false"
       @change="handleLanguageCurrencyChange"
@@ -1003,7 +1002,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import AuthModal from "~/components/AuthModal.vue";
 import LanguageCurrencyModal from "~/components/LanguageCurrencyModal.vue";
 import OrderListModal from "~/components/OrderListModal.vue";
@@ -1119,6 +1118,19 @@ const uid = ref("");
 const { locale, locales } = useI18n();
 const currentLanguage = computed(() => locale.value);
 const currentCurrency = ref("USD");
+
+// Debug: Watch for locale changes
+watch(
+  locale,
+  (newLocale, oldLocale) => {
+    console.log("🔄 [App] Locale changed from", oldLocale, "to", newLocale);
+    console.log(
+      "💾 [App] Current localStorage user_selected_language:",
+      import.meta.client && localStorage.getItem("user_selected_language")
+    );
+  },
+  { immediate: true }
+);
 
 // User authentication state
 const isLoggedIn = ref(false);
@@ -1380,18 +1392,13 @@ const handleLanguageCurrencyChange = async (settings) => {
   // Language is handled by the LanguageCurrencyModal component via setLocale
   currentCurrency.value = settings.currency;
   console.log("Language and currency updated:", settings);
-  // Here you could save to localStorage or send to server
-  localStorage.setItem("preferredLanguage", settings.language);
+  // Save currency preference to localStorage
   localStorage.setItem("preferredCurrency", settings.currency);
 };
 
-// Initialize language and currency from localStorage
+// Initialize currency from localStorage
 onMounted(() => {
-  const savedLanguage = localStorage.getItem("preferredLanguage");
   const savedCurrency = localStorage.getItem("preferredCurrency");
-  if (savedLanguage && locales.value.some((l) => l.code === savedLanguage)) {
-    locale.value = savedLanguage;
-  }
   if (savedCurrency) {
     currentCurrency.value = savedCurrency;
   }

@@ -102,10 +102,6 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  initialLanguage: {
-    type: String,
-    default: "en",
-  },
   initialCurrency: {
     type: String,
     default: "USD",
@@ -116,7 +112,7 @@ const emit = defineEmits(["close", "change"]);
 
 const { locales, locale, setLocale } = useI18n();
 
-const selectedLanguage = ref(props.initialLanguage);
+const selectedLanguage = ref(locale.value);
 const selectedCurrency = ref(props.initialCurrency);
 
 const availableLocales = computed(() => locales.value);
@@ -144,8 +140,28 @@ const getLanguageName = (code) => {
 };
 
 const applyChanges = async () => {
+  console.log(
+    "🎯 [LanguageCurrencyModal] Applying language change:",
+    selectedLanguage.value
+  );
+
   // Update locale
   await setLocale(selectedLanguage.value);
+  console.log(
+    "✅ [LanguageCurrencyModal] Locale set to:",
+    selectedLanguage.value
+  );
+
+  // 保存用户手动选择的语言到 localStorage
+  localStorage.setItem("user_selected_language", selectedLanguage.value);
+  console.log(
+    "💾 [LanguageCurrencyModal] Saved to localStorage:",
+    selectedLanguage.value
+  );
+
+  // 标记用户已手动选择语言，清除自动检测标记
+  localStorage.removeItem("i18n_auto_detected");
+  console.log("🧹 [LanguageCurrencyModal] Cleared auto-detection flag");
 
   emit("change", {
     language: selectedLanguage.value,
@@ -159,7 +175,7 @@ watch(
   () => props.show,
   (newVal) => {
     if (newVal) {
-      selectedLanguage.value = props.initialLanguage;
+      selectedLanguage.value = locale.value;
       selectedCurrency.value = props.initialCurrency;
     }
   }
