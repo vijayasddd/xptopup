@@ -113,10 +113,10 @@
               <!-- 背景装饰元素 -->
               <div
                 class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-full -translate-y-16 translate-x-16 blur-xl"
-              ></div>
+              />
               <div
                 class="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-400/20 to-purple-500/20 rounded-full translate-y-12 -translate-x-12 blur-xl"
-              ></div>
+              />
 
               <!-- 合并后的布局 - 替换原来的两个布局 -->
               <div class="relative z-10">
@@ -498,21 +498,21 @@
         <!-- 背景装饰元素 -->
         <div
           class="absolute top-0 left-1/4 w-32 h-32 bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-full -translate-y-16 blur-xl"
-        ></div>
+        />
         <div
           class="absolute bottom-0 right-1/4 w-40 h-40 bg-gradient-to-tl from-blue-400/20 to-purple-500/20 rounded-full translate-y-20 blur-xl"
-        ></div>
+        />
 
         <div class="container mx-auto px-3 lg:px-8 py-6 lg:py-12 relative z-10">
           <!-- 移动端布局 -->
           <div class="lg:hidden space-y-8">
             <!-- 品牌信息 -->
             <div>
-              <div class="flex items-center mb-4">
+              <div class="flex items-center justify-center mb-4">
                 <img
-                  src="/logo.png"
+                  src="/hsrlogo.png"
                   alt="Logo"
-                  class="h-16 w-auto drop-shadow-lg"
+                  class="h-16 rounded-sm w-auto drop-shadow-lg"
                 />
               </div>
               <p class="text-sm text-slate-200 mb-6 leading-relaxed">
@@ -685,7 +685,7 @@
             <div class="lg:max-w-[500px]">
               <div class="flex items-center mb-6">
                 <img
-                  src="/logo.png"
+                  src="/hsrlogo.png"
                   alt="Logo"
                   class="h-20 w-auto drop-shadow-lg"
                 />
