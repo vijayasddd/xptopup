@@ -1,7 +1,7 @@
 <template>
   <BaseModal
     :show="show"
-    title="Language & Currency"
+    :title="$t('languageCurrency.title')"
     size="sm"
     @close="$emit('close')"
   >
@@ -15,19 +15,19 @@
             name="heroicons:language"
             class="h-4 w-4 inline mr-2 text-amber-400"
           />
-          Language
+          {{ $t("languageCurrency.language") }}
         </label>
         <select
           v-model="selectedLanguage"
           class="w-full bg-slate-700/60 backdrop-blur-sm border border-slate-600/50 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400/50 transition-all duration-300 text-white shadow-lg hover:border-blue-400/50"
         >
           <option
-            v-for="lang in languages"
-            :key="lang.code"
-            :value="lang.code"
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            :value="locale.code"
             class="bg-slate-700 text-white"
           >
-            {{ lang.name }}
+            {{ locale.flag }} {{ locale.name }}
           </option>
         </select>
       </div>
@@ -41,7 +41,7 @@
             name="heroicons:currency-dollar"
             class="h-4 w-4 inline mr-2 text-amber-400"
           />
-          Currency
+          {{ $t("languageCurrency.currency") }}
         </label>
         <select
           v-model="selectedCurrency"
@@ -80,13 +80,13 @@
           class="px-4 py-2 text-slate-300 hover:text-amber-300 transition-colors duration-300"
           @click="$emit('close')"
         >
-          Cancel
+          {{ $t("languageCurrency.cancel") }}
         </button>
         <button
           class="px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white rounded-lg font-medium transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 border border-amber-400/30"
           @click="applyChanges"
         >
-          Apply Changes
+          {{ $t("languageCurrency.save") }}
         </button>
       </div>
     </template>
@@ -94,7 +94,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import BaseModal from "./BaseModal.vue";
 
 const props = defineProps({
@@ -114,23 +114,12 @@ const props = defineProps({
 
 const emit = defineEmits(["close", "change"]);
 
+const { locales, locale, setLocale } = useI18n();
+
 const selectedLanguage = ref(props.initialLanguage);
 const selectedCurrency = ref(props.initialCurrency);
 
-const languages = ref([
-  { code: "en", name: "English" },
-  { code: "zh", name: "中文 (Chinese)" },
-  { code: "ja", name: "日本語 (Japanese)" },
-  { code: "ko", name: "한국어 (Korean)" },
-  { code: "es", name: "Español (Spanish)" },
-  { code: "fr", name: "Français (French)" },
-  { code: "de", name: "Deutsch (German)" },
-  { code: "pt", name: "Português (Portuguese)" },
-  { code: "ru", name: "Русский (Russian)" },
-  { code: "it", name: "Italiano (Italian)" },
-  { code: "ar", name: "العربية (Arabic)" },
-  { code: "th", name: "ไทย (Thai)" },
-]);
+const availableLocales = computed(() => locales.value);
 
 const currencies = ref([
   { code: "USD", symbol: "$", name: "US Dollar" },
@@ -139,6 +128,8 @@ const currencies = ref([
   { code: "JPY", symbol: "¥", name: "Japanese Yen" },
   { code: "CNY", symbol: "¥", name: "Chinese Yuan" },
   { code: "KRW", symbol: "₩", name: "Korean Won" },
+  { code: "TWD", symbol: "NT$", name: "Taiwan Dollar" },
+  { code: "IDR", symbol: "Rp", name: "Indonesian Rupiah" },
   { code: "CAD", symbol: "C$", name: "Canadian Dollar" },
   { code: "AUD", symbol: "A$", name: "Australian Dollar" },
   { code: "CHF", symbol: "CHF", name: "Swiss Franc" },
@@ -148,11 +139,14 @@ const currencies = ref([
 ]);
 
 const getLanguageName = (code) => {
-  const lang = languages.value.find((l) => l.code === code);
-  return lang ? lang.name : code.toUpperCase();
+  const locale = availableLocales.value.find((l) => l.code === code);
+  return locale ? `${locale.flag} ${locale.name}` : code.toUpperCase();
 };
 
-const applyChanges = () => {
+const applyChanges = async () => {
+  // Update locale
+  await setLocale(selectedLanguage.value);
+
   emit("change", {
     language: selectedLanguage.value,
     currency: selectedCurrency.value,

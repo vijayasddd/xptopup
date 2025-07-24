@@ -1,0 +1,153 @@
+{
+  "header": {
+    "login": "ログイン",
+    "orders": "注文履歴"
+  },
+  "hero": {
+    "title": "崩壊：スターレイル",
+    "subtitle": "🎮 公式直接チャージ | 🛡️ 100% 安全・安心",
+    "byHoyoverse": "HoYoverse公式",
+    "instantDelivery": "即座に配送",
+    "officialVerified": "公式認証済み",
+    "verified": "認証済み"
+  },
+  "banner": {
+    "bonus": "ボーナス更新！初回V3.2チャージで2倍星瓊"
+  },
+  "products": {
+    "expressSupplyPass": "[V3.4限定] 列車補給パス",
+    "oneiricShard6480": "[V3.4限定] 6480+1600",
+    "fireflyBundle": "ホタル|ジン・リュウ|ブレード確定バンドル",
+    "lightConesBundle": "5つ星光円錐バンドル",
+    "springOutfit": "春の便り衣装パック",
+    "fateBundle": "[Fate限定] セイバー/アーチャー確定バンドル",
+    "fateLightCones": "[Fate限定] 5つ星光円錐バンドル",
+    "allInOneBundle": "オール・イン・ワンバンドル",
+    "oneiricShard3": "6480+1600星瓊 × 3",
+    "oneiricShard5": "6480+1600星瓊 × 5",
+    "oneiricShard10": "6480+1600星瓊 × 10",
+    "hertaTrailblazeAid": "ヘルタ契約：開拓援助",
+    "hertaFuelRefill": "ヘルタ契約：燃料補充",
+    "hertaQuestSharing": "ヘルタ契約：クエスト共有"
+  },
+  "topup": {
+    "title": "チャージ",
+    "selectServer": "サーバー選択",
+    "enterUID": "UID入力",
+    "selectProduct": "商品選択",
+    "purchaseNow": "今すぐ購入",
+    "uidPlaceholder": "UIDを入力してください",
+    "serverList": {
+      "america": "アメリカサーバー",
+      "europe": "ヨーロッパサーバー",
+      "asia": "アジアサーバー",
+      "twHkMo": "台湾・香港・マカオサーバー"
+    },
+    "errors": {
+      "selectServer": "サーバーを選択してください",
+      "enterUID": "UIDを入力してください",
+      "selectProduct": "商品を選択してください"
+    }
+  },
+  "content": {
+    "description": {
+      "title": "商品説明",
+      "content1": "崩壊：スターレイル格安チャージ - 高速・安全",
+      "content2": "崩壊：スターレイルアカウントへの簡単で高速なチャージ！UIDを入力し、サーバーを選択し、購入したい値を選び、支払いを完了すれば、星瓊または列車補給パスがすぐにアカウントに追加されます。",
+      "content3": "PayPal、Razer Gold、またはお好みのローカル決済方法で便利にお支払いください。登録やログインは不要で、可能な限りスムーズな購入体験を提供します。"
+    },
+    "faqs": {
+      "title": "よくある質問",
+      "q1": "崩壊：スターレイルのUIDはどうやって確認できますか？",
+      "a1": "1. ゲームにログインしてください。2. UIDはゲーム内のアバターの下に表示されます。",
+      "q2": "アイテムを受け取るまでどのくらい時間がかかりますか？",
+      "a2": "支払い完了後、数分以内にアイテムがゲームアカウントに反映されます。",
+      "q3": "どの決済方法がサポートされていますか？",
+      "a3": "クレジット/デビットカード、PayPal、および各種ローカル決済オプションを含む幅広い決済方法をサポートしています。"
+    },
+    "reviews": {
+      "title": "ユーザーレビュー",
+      "reviewsCount": "10万+ レビュー",
+      "loadMore": "もっとレビューを読む"
+    }
+  },
+  "footer": {
+    "description": "信頼できるゲームチャージパートナー。すべてのゲームニーズに対応する高速、安全、信頼性の高いサービス。",
+    "support": "サポート",
+    "legal": "法的事項",
+    "supportLinks": {
+      "helpCenter": "ヘルプセンター",
+      "contactUs": "お問い合わせ",
+      "liveChat": "ライブチャット",
+      "orderStatus": "注文状況",
+      "refundPolicy": "返金ポリシー"
+    },
+    "legalLinks": {
+      "termsOfService": "利用規約",
+      "privacyPolicy": "プライバシーポリシー",
+      "cookiePolicy": "Cookieポリシー",
+      "securityCenter": "セキュリティセンター",
+      "trustSafety": "信頼と安全"
+    },
+    "paymentMethods": "安全な決済方法",
+    "stats": {
+      "happyCustomers": "満足顧客",
+      "support247": "サポート",
+      "uptime": "稼働時間"
+    },
+    "copyright": "HSRTopUp. すべての権利を保有。",
+    "disclaimer": "HoYoverseとは関係ありません。すべての商標はそれぞれの所有者に帰属します。"
+  },
+  "auth": {
+    "login": "ログイン",
+    "register": "登録",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirmPassword": "パスワード確認",
+    "googleLogin": "Googleでログイン",
+    "forgotPassword": "パスワードを忘れましたか？",
+    "noAccount": "アカウントをお持ちでない方",
+    "hasAccount": "既にアカウントをお持ちの方"
+  },
+  "order": {
+    "title": "注文確認",
+    "orderDetails": "注文詳細",
+    "paymentMethod": "決済方法",
+    "totalAmount": "合計金額",
+    "confirm": "注文確認",
+    "cancel": "キャンセル",
+    "processing": "処理中...",
+    "success": "注文が正常に完了しました！",
+    "error": "注文に失敗しました。再度お試しください。"
+  },
+  "orderHistory": {
+    "title": "注文履歴",
+    "orderNumber": "注文番号",
+    "status": "ステータス",
+    "amount": "金額",
+    "date": "日付",
+    "noOrders": "注文が見つかりません",
+    "viewDetails": "詳細を見る",
+    "statuses": {
+      "completed": "完了",
+      "pending": "保留中",
+      "failed": "失敗"
+    }
+  },
+  "languageCurrency": {
+    "title": "言語と通貨",
+    "language": "言語",
+    "currency": "通貨",
+    "save": "変更を保存",
+    "cancel": "キャンセル"
+  },
+  "common": {
+    "close": "閉じる",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功"
+  }
+}

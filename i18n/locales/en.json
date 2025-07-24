@@ -1,0 +1,153 @@
+{
+  "header": {
+    "login": "Login",
+    "orders": "Orders"
+  },
+  "hero": {
+    "title": "Honkai: Star Rail",
+    "subtitle": "🎮 Official Direct Top-Up | 🛡️ 100% Safe & Secure",
+    "byHoyoverse": "By HoYoverse",
+    "instantDelivery": "Instant Delivery",
+    "officialVerified": "Official Verified",
+    "verified": "Verified"
+  },
+  "banner": {
+    "bonus": "BONUS REFRESHED! 2X Oneiric Shards on First V3.2 Top-Up"
+  },
+  "products": {
+    "expressSupplyPass": "[V3.4 Limited] Express Supply Pass",
+    "oneiricShard6480": "[V3.4 Limited] 6480+1600",
+    "fireflyBundle": "Firefly|Jingliu|Blade Guarantee Bundle",
+    "lightConesBundle": "5 Star Light Cones Bundle",
+    "springOutfit": "Spring Missive Outfit Pack",
+    "fateBundle": "[Fate Limited] Saber/Archer Guarantee Bundle",
+    "fateLightCones": "[Fate Limited] 5 Star Light Cones Bundle",
+    "allInOneBundle": "All-In-One bundle",
+    "oneiricShard3": "6480+1600 Oneiric Shard × 3",
+    "oneiricShard5": "6480+1600 Oneiric Shard × 5",
+    "oneiricShard10": "6480+1600 Oneiric Shard × 10",
+    "hertaTrailblazeAid": "Herta Contract: Trailblaze Aid",
+    "hertaFuelRefill": "Herta Contract: Fuel Refill",
+    "hertaQuestSharing": "Herta Contract: Quest Sharing"
+  },
+  "topup": {
+    "title": "Top-Up",
+    "selectServer": "Select Server",
+    "enterUID": "Enter UID",
+    "selectProduct": "Select Product",
+    "purchaseNow": "Purchase Now",
+    "uidPlaceholder": "Enter your UID here",
+    "serverList": {
+      "america": "America",
+      "europe": "Europe",
+      "asia": "Asia",
+      "twHkMo": "TW, HK, MO"
+    },
+    "errors": {
+      "selectServer": "Please select a server",
+      "enterUID": "Please enter your UID",
+      "selectProduct": "Please select a product"
+    }
+  },
+  "content": {
+    "description": {
+      "title": "Description",
+      "content1": "Buy Cheap Honkai: Star Rail Top Up - Fast & Safe",
+      "content2": "Easy and fast to top up your Honkai: Star Rail account! Just enter your UID, select your server, choose the value you want to purchase, complete the payment, and the Oneiric Shard or Express Supply Pass will be added to your account immediately.",
+      "content3": "Pay with convenience using PayPal, Razer Gold, or your preferred local payment methods. There's no registration or login required, making your purchase experience as seamless as possible."
+    },
+    "faqs": {
+      "title": "FAQs",
+      "q1": "How to find my Honkai: Star Rail UID?",
+      "a1": "1. Login to the game. 2. Your UID will be displayed below your in-game avatar.",
+      "q2": "How long does it take to receive the items?",
+      "a2": "After the payment is complete, the items will be credited to your game account within minutes.",
+      "q3": "What payment methods are supported?",
+      "a3": "We support a wide range of payment methods including credit/debit cards, PayPal, and various local payment options."
+    },
+    "reviews": {
+      "title": "User Reviews",
+      "reviewsCount": "100k+ reviews",
+      "loadMore": "Load More Reviews"
+    }
+  },
+  "footer": {
+    "description": "Your trusted partner for instant game top-ups. Fast, secure, and reliable service for all your gaming needs.",
+    "support": "Support",
+    "legal": "Legal",
+    "supportLinks": {
+      "helpCenter": "Help Center",
+      "contactUs": "Contact Us",
+      "liveChat": "Live Chat",
+      "orderStatus": "Order Status",
+      "refundPolicy": "Refund Policy"
+    },
+    "legalLinks": {
+      "termsOfService": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "cookiePolicy": "Cookie Policy",
+      "securityCenter": "Security Center",
+      "trustSafety": "Trust & Safety"
+    },
+    "paymentMethods": "Secure Payment Methods",
+    "stats": {
+      "happyCustomers": "Happy Customers",
+      "support247": "Support",
+      "uptime": "Uptime"
+    },
+    "copyright": "HSRTopUp. All rights reserved.",
+    "disclaimer": "Not affiliated with HoYoverse. All trademarks belong to their respective owners."
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "googleLogin": "Continue with Google",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "order": {
+    "title": "Order Confirmation",
+    "orderDetails": "Order Details",
+    "paymentMethod": "Payment Method",
+    "totalAmount": "Total Amount",
+    "confirm": "Confirm Order",
+    "cancel": "Cancel",
+    "processing": "Processing...",
+    "success": "Order completed successfully!",
+    "error": "Order failed. Please try again."
+  },
+  "orderHistory": {
+    "title": "Order History",
+    "orderNumber": "Order Number",
+    "status": "Status",
+    "amount": "Amount",
+    "date": "Date",
+    "noOrders": "No orders found",
+    "viewDetails": "View Details",
+    "statuses": {
+      "completed": "Completed",
+      "pending": "Pending",
+      "failed": "Failed"
+    }
+  },
+  "languageCurrency": {
+    "title": "Language & Currency",
+    "language": "Language",
+    "currency": "Currency",
+    "save": "Save Changes",
+    "cancel": "Cancel"
+  },
+  "common": {
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}

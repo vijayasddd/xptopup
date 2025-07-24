@@ -1,0 +1,153 @@
+{
+  "header": {
+    "login": "로그인",
+    "orders": "주문 내역"
+  },
+  "hero": {
+    "title": "붕괴: 스타레일",
+    "subtitle": "🎮 공식 직접 충전 | 🛡️ 100% 안전 보장",
+    "byHoyoverse": "HoYoverse 공식",
+    "instantDelivery": "즉시 배송",
+    "officialVerified": "공식 인증",
+    "verified": "인증됨"
+  },
+  "banner": {
+    "bonus": "보너스 갱신! 첫 V3.2 충전 시 2배 성옥"
+  },
+  "products": {
+    "expressSupplyPass": "[V3.4 한정] 급행 보급 패스",
+    "oneiricShard6480": "[V3.4 한정] 6480+1600",
+    "fireflyBundle": "반딧불이|경류|블레이드 보장 번들",
+    "lightConesBundle": "5성 광추 번들",
+    "springOutfit": "봄날의 편지 의상 팩",
+    "fateBundle": "[Fate 한정] 세이버/아처 보장 번들",
+    "fateLightCones": "[Fate 한정] 5성 광추 번들",
+    "allInOneBundle": "올인원 번들",
+    "oneiricShard3": "6480+1600 성옥 × 3",
+    "oneiricShard5": "6480+1600 성옥 × 5",
+    "oneiricShard10": "6480+1600 성옥 × 10",
+    "hertaTrailblazeAid": "헤르타 계약: 개척 지원",
+    "hertaFuelRefill": "헤르타 계약: 연료 보충",
+    "hertaQuestSharing": "헤르타 계약: 퀘스트 공유"
+  },
+  "topup": {
+    "title": "충전",
+    "selectServer": "서버 선택",
+    "enterUID": "UID 입력",
+    "selectProduct": "상품 선택",
+    "purchaseNow": "지금 구매",
+    "uidPlaceholder": "UID를 입력하세요",
+    "serverList": {
+      "america": "아메리카 서버",
+      "europe": "유럽 서버",
+      "asia": "아시아 서버",
+      "twHkMo": "대만, 홍콩, 마카오 서버"
+    },
+    "errors": {
+      "selectServer": "서버를 선택해주세요",
+      "enterUID": "UID를 입력해주세요",
+      "selectProduct": "상품을 선택해주세요"
+    }
+  },
+  "content": {
+    "description": {
+      "title": "상품 설명",
+      "content1": "저렴한 붕괴: 스타레일 충전 - 빠르고 안전",
+      "content2": "붕괴: 스타레일 계정 충전이 쉽고 빠릅니다! UID를 입력하고 서버를 선택한 후 구매하려는 값을 선택하고 결제를 완료하면 성옥 또는 급행 보급 패스가 즉시 계정에 추가됩니다.",
+      "content3": "PayPal, Razer Gold 또는 선호하는 현지 결제 방법으로 편리하게 결제하세요. 등록이나 로그인이 필요 없어 가능한 한 원활한 구매 경험을 제공합니다."
+    },
+    "faqs": {
+      "title": "자주 묻는 질문",
+      "q1": "붕괴: 스타레일 UID는 어떻게 찾나요?",
+      "a1": "1. 게임에 로그인하세요. 2. UID가 게임 내 아바타 아래에 표시됩니다.",
+      "q2": "아이템을 받는 데 얼마나 걸리나요?",
+      "a2": "결제 완료 후 몇 분 내에 아이템이 게임 계정에 적립됩니다.",
+      "q3": "어떤 결제 방법을 지원하나요?",
+      "a3": "신용/체크카드, PayPal 및 다양한 현지 결제 옵션을 포함한 광범위한 결제 방법을 지원합니다."
+    },
+    "reviews": {
+      "title": "사용자 리뷰",
+      "reviewsCount": "10만+ 리뷰",
+      "loadMore": "더 많은 리뷰 보기"
+    }
+  },
+  "footer": {
+    "description": "신뢰할 수 있는 게임 충전 파트너. 모든 게임 요구사항에 대한 빠르고 안전하며 신뢰할 수 있는 서비스.",
+    "support": "고객 지원",
+    "legal": "법적 고지",
+    "supportLinks": {
+      "helpCenter": "도움말 센터",
+      "contactUs": "문의하기",
+      "liveChat": "실시간 채팅",
+      "orderStatus": "주문 상태",
+      "refundPolicy": "환불 정책"
+    },
+    "legalLinks": {
+      "termsOfService": "서비스 약관",
+      "privacyPolicy": "개인정보처리방침",
+      "cookiePolicy": "쿠키 정책",
+      "securityCenter": "보안 센터",
+      "trustSafety": "신뢰와 안전"
+    },
+    "paymentMethods": "안전한 결제 방법",
+    "stats": {
+      "happyCustomers": "만족한 고객",
+      "support247": "고객 지원",
+      "uptime": "가동 시간"
+    },
+    "copyright": "HSRTopUp. 모든 권리 보유.",
+    "disclaimer": "HoYoverse와 제휴하지 않았습니다. 모든 상표는 각 소유자에게 속합니다."
+  },
+  "auth": {
+    "login": "로그인",
+    "register": "회원가입",
+    "email": "이메일",
+    "password": "비밀번호",
+    "confirmPassword": "비밀번호 확인",
+    "googleLogin": "Google로 계속하기",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "noAccount": "계정이 없으신가요?",
+    "hasAccount": "이미 계정이 있으신가요?"
+  },
+  "order": {
+    "title": "주문 확인",
+    "orderDetails": "주문 세부 정보",
+    "paymentMethod": "결제 방법",
+    "totalAmount": "총 금액",
+    "confirm": "주문 확인",
+    "cancel": "취소",
+    "processing": "처리 중...",
+    "success": "주문이 성공적으로 완료되었습니다!",
+    "error": "주문에 실패했습니다. 다시 시도해주세요."
+  },
+  "orderHistory": {
+    "title": "주문 내역",
+    "orderNumber": "주문 번호",
+    "status": "상태",
+    "amount": "금액",
+    "date": "날짜",
+    "noOrders": "주문 내역이 없습니다",
+    "viewDetails": "자세히 보기",
+    "statuses": {
+      "completed": "완료",
+      "pending": "대기 중",
+      "failed": "실패"
+    }
+  },
+  "languageCurrency": {
+    "title": "언어 및 통화",
+    "language": "언어",
+    "currency": "통화",
+    "save": "변경사항 저장",
+    "cancel": "취소"
+  },
+  "common": {
+    "close": "닫기",
+    "save": "저장",
+    "cancel": "취소",
+    "confirm": "확인",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "success": "성공"
+  }
+}

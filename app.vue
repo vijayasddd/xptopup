@@ -76,7 +76,7 @@
                   name="heroicons:user-circle"
                   class="h-3 w-3 lg:h-5 lg:w-5"
                 />
-                <span>Login</span>
+                <span>{{ $t("header.login") }}</span>
               </button>
 
               <!-- 已登录时显示订单按钮 -->
@@ -97,7 +97,7 @@
                   name="heroicons:clipboard-document-list"
                   class="h-3 w-3 lg:h-5 lg:w-5"
                 />
-                <span>Orders</span>
+                <span>{{ $t("header.orders") }}</span>
               </button>
             </div>
           </div>
@@ -137,7 +137,7 @@
                       <h1
                         class="text-lg lg:text-xl lg:text-2xl font-bold text-white mb-1 lg:mb-0 drop-shadow-lg"
                       >
-                        Honkai: Star Rail
+                        {{ $t("hero.title") }}
                       </h1>
                       <div class="flex items-center space-x-1">
                         <Icon
@@ -167,11 +167,7 @@
                     <p
                       class="text-xs lg:text-xs lg:text-sm text-amber-300 leading-5 lg:leading-normal font-medium mb-2 lg:mb-3 drop-shadow-md"
                     >
-                      🎮 Official Direct Top-Up<br class="lg:hidden" /><span
-                        class="hidden lg:inline"
-                      >
-                        | </span
-                      >🛡️ 100% Safe & Secure
+                      {{ $t("hero.subtitle") }}
                     </p>
 
                     <!-- PC端标签 - 只在PC端显示 -->
@@ -180,19 +176,19 @@
                         class="inline-flex items-center space-x-1 px-3 py-1.5 bg-emerald-500/20 text-emerald-300 text-xs lg:text-sm rounded-full border border-emerald-400/40 backdrop-blur-sm shadow-lg"
                       >
                         <Icon name="heroicons:shield-check" class="h-3 w-3" />
-                        <span>By HoYoverse</span>
+                        <span>{{ $t("hero.byHoyoverse") }}</span>
                       </span>
                       <span
                         class="inline-flex items-center space-x-1 px-3 py-1.5 bg-blue-500/20 text-blue-300 text-xs lg:text-sm rounded-full border border-blue-400/40 backdrop-blur-sm shadow-lg"
                       >
                         <Icon name="heroicons:bolt" class="h-3 w-3" />
-                        <span>Instant Delivery</span>
+                        <span>{{ $t("hero.instantDelivery") }}</span>
                       </span>
                       <span
                         class="inline-flex items-center space-x-1 px-3 py-1.5 bg-amber-500/20 text-amber-300 text-xs lg:text-sm rounded-full border border-amber-400/40 backdrop-blur-sm shadow-lg"
                       >
                         <Icon name="heroicons:trophy" class="h-3 w-3" />
-                        <span>Official Verified</span>
+                        <span>{{ $t("hero.officialVerified") }}</span>
                       </span>
                     </div>
                   </div>
@@ -204,19 +200,19 @@
                     class="inline-flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-full border border-emerald-400/40 backdrop-blur-sm"
                   >
                     <Icon name="heroicons:shield-check" class="h-2.5 w-2.5" />
-                    <span>By HoYoverse</span>
+                    <span>{{ $t("hero.byHoyoverse") }}</span>
                   </span>
                   <span
                     class="inline-flex items-center space-x-1 px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full border border-blue-400/40 backdrop-blur-sm"
                   >
                     <Icon name="heroicons:bolt" class="h-2.5 w-2.5" />
-                    <span>Instant Delivery</span>
+                    <span>{{ $t("hero.instantDelivery") }}</span>
                   </span>
                   <span
                     class="inline-flex items-center space-x-1 px-2 py-1 bg-amber-500/20 text-amber-300 text-xs rounded-full border border-amber-400/40 backdrop-blur-sm"
                   >
                     <Icon name="heroicons:trophy" class="h-2.5 w-2.5" />
-                    <span>Verified</span>
+                    <span>{{ $t("hero.verified") }}</span>
                   </span>
                 </div>
               </div>
@@ -229,7 +225,7 @@
                 <h2
                   class="font-semibold text-white text-xs lg:text-sm drop-shadow-md"
                 >
-                  BONUS REFRESHED! 2X Oneiric Shards on First V3.2 Top-Up
+                  {{ $t("banner.bonus") }}
                 </h2>
               </div>
 
@@ -313,24 +309,17 @@
                 <h2
                   class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 drop-shadow-lg"
                 >
-                  Description
+                  {{ $t("content.description.title") }}
                 </h2>
                 <div
                   class="text-slate-200 space-y-2 lg:space-y-3 text-sm leading-relaxed"
                 >
-                  <p>Buy Cheap Honkai: Star Rail Top Up - Fast & Safe</p>
+                  <p>{{ $t("content.description.content1") }}</p>
                   <p>
-                    Easy and fast to top up your Honkai: Star Rail account! Just
-                    enter your UID, select your server, choose the value you
-                    want to purchase, complete the payment, and the Oneiric
-                    Shard or Express Supply Pass will be added to your account
-                    immediately.
+                    {{ $t("content.description.content2") }}
                   </p>
                   <p>
-                    Pay with convenience using PayPal, Razer Gold, or your
-                    preferred local payment methods. There's no registration or
-                    login required, making your purchase experience as seamless
-                    as possible.
+                    {{ $t("content.description.content3") }}
                   </p>
                 </div>
               </div>
@@ -340,14 +329,26 @@
                 <h2
                   class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 drop-shadow-lg"
                 >
-                  FAQs
+                  {{ $t("content.faqs.title") }}
                 </h2>
                 <div class="space-y-3 lg:space-y-4">
-                  <div v-for="faq in faqs" :key="faq.q" class="text-sm">
+                  <div class="text-sm">
                     <p class="font-semibold text-amber-300 mb-1 drop-shadow-md">
-                      {{ faq.q }}
+                      {{ $t("content.faqs.q1") }}
                     </p>
-                    <p class="text-slate-200">{{ faq.a }}</p>
+                    <p class="text-slate-200">{{ $t("content.faqs.a1") }}</p>
+                  </div>
+                  <div class="text-sm">
+                    <p class="font-semibold text-amber-300 mb-1 drop-shadow-md">
+                      {{ $t("content.faqs.q2") }}
+                    </p>
+                    <p class="text-slate-200">{{ $t("content.faqs.a2") }}</p>
+                  </div>
+                  <div class="text-sm">
+                    <p class="font-semibold text-amber-300 mb-1 drop-shadow-md">
+                      {{ $t("content.faqs.q3") }}
+                    </p>
+                    <p class="text-slate-200">{{ $t("content.faqs.a3") }}</p>
                   </div>
                 </div>
               </div>
@@ -357,7 +358,7 @@
                 <h2
                   class="text-lg lg:text-xl font-bold text-white mb-3 lg:mb-4 drop-shadow-lg"
                 >
-                  User Reviews
+                  {{ $t("content.reviews.title") }}
                 </h2>
                 <div class="space-y-4 lg:space-y-6">
                   <div class="text-center">
@@ -391,7 +392,7 @@
                       />
                     </div>
                     <p class="text-xs lg:text-sm text-slate-300 mt-1">
-                      100k+ reviews
+                      {{ $t("content.reviews.reviewsCount") }}
                     </p>
                   </div>
                   <div class="max-w-2xl mx-auto">
@@ -471,7 +472,7 @@
                       class="px-4 py-2 lg:px-6 lg:py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg text-xs lg:text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
                       @click="loadMoreReviews"
                     >
-                      Load More Reviews
+                      {{ $t("content.reviews.loadMore") }}
                     </button>
                   </div>
                 </div>
@@ -516,8 +517,7 @@
                 />
               </div>
               <p class="text-sm text-slate-200 mb-6 leading-relaxed">
-                Your trusted partner for instant game top-ups. Fast, secure, and
-                reliable service for all your gaming needs.
+                {{ $t("footer.description") }}
               </p>
 
               <!-- 社交媒体链接 -->
@@ -576,7 +576,7 @@
                     name="heroicons:lifebuoy"
                     class="h-4 w-4 text-blue-400 mr-2 flex-shrink-0"
                   />
-                  Support
+                  {{ $t("footer.support") }}
                 </h4>
                 <ul class="space-y-2 text-xs">
                   <li>
@@ -584,7 +584,7 @@
                       href="#"
                       class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
-                      Help Center
+                      {{ $t("footer.supportLinks.helpCenter") }}
                     </a>
                   </li>
                   <li>
@@ -592,7 +592,7 @@
                       href="#"
                       class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
-                      Contact Us
+                      {{ $t("footer.supportLinks.contactUs") }}
                     </a>
                   </li>
                   <li>
@@ -600,7 +600,7 @@
                       href="#"
                       class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
-                      Live Chat
+                      {{ $t("footer.supportLinks.liveChat") }}
                     </a>
                   </li>
                   <li>
@@ -608,7 +608,7 @@
                       href="#"
                       class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
-                      Order Status
+                      {{ $t("footer.supportLinks.orderStatus") }}
                     </a>
                   </li>
                   <li>
@@ -616,7 +616,7 @@
                       href="#"
                       class="text-slate-300 hover:text-blue-300 transition-colors"
                     >
-                      Refund Policy
+                      {{ $t("footer.supportLinks.refundPolicy") }}
                     </a>
                   </li>
                 </ul>
@@ -631,7 +631,7 @@
                     name="heroicons:shield-check"
                     class="h-4 w-4 text-amber-400 mr-2 flex-shrink-0"
                   />
-                  Legal
+                  {{ $t("footer.legal") }}
                 </h4>
                 <ul class="space-y-2 text-xs">
                   <li>
@@ -639,7 +639,7 @@
                       href="#"
                       class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
-                      Terms of Service
+                      {{ $t("footer.legalLinks.termsOfService") }}
                     </a>
                   </li>
                   <li>
@@ -647,7 +647,7 @@
                       href="#"
                       class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
-                      Privacy Policy
+                      {{ $t("footer.legalLinks.privacyPolicy") }}
                     </a>
                   </li>
                   <li>
@@ -655,7 +655,7 @@
                       href="#"
                       class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
-                      Cookie Policy
+                      {{ $t("footer.legalLinks.cookiePolicy") }}
                     </a>
                   </li>
                   <li>
@@ -663,7 +663,7 @@
                       href="#"
                       class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
-                      Security Center
+                      {{ $t("footer.legalLinks.securityCenter") }}
                     </a>
                   </li>
                   <li>
@@ -671,7 +671,7 @@
                       href="#"
                       class="text-slate-300 hover:text-amber-300 transition-colors"
                     >
-                      Trust & Safety
+                      {{ $t("footer.legalLinks.trustSafety") }}
                     </a>
                   </li>
                 </ul>
@@ -691,8 +691,7 @@
                 />
               </div>
               <p class="text-base text-slate-200 mb-6 leading-relaxed">
-                Your trusted partner for instant game top-ups. Fast, secure, and
-                reliable service for all your gaming needs.
+                {{ $t("footer.description") }}
               </p>
 
               <!-- 社交媒体链接 -->
@@ -868,7 +867,7 @@
                     name="heroicons:credit-card"
                     class="h-4 w-4 text-emerald-400 mr-2"
                   />
-                  Secure Payment Methods
+                  {{ $t("footer.paymentMethods") }}
                 </h5>
                 <div
                   class="flex flex-wrap gap-3 justify-center lg:justify-start"
@@ -926,7 +925,9 @@
                   >
                     1M+
                   </p>
-                  <p class="text-xs text-slate-300">Happy Customers</p>
+                  <p class="text-xs text-slate-300">
+                    {{ $t("footer.stats.happyCustomers") }}
+                  </p>
                 </div>
                 <div class="text-center">
                   <p
@@ -934,7 +935,9 @@
                   >
                     24/7
                   </p>
-                  <p class="text-xs text-slate-300">Support</p>
+                  <p class="text-xs text-slate-300">
+                    {{ $t("footer.stats.support247") }}
+                  </p>
                 </div>
                 <div class="text-center">
                   <p
@@ -942,7 +945,9 @@
                   >
                     99.9%
                   </p>
-                  <p class="text-xs text-slate-300">Uptime</p>
+                  <p class="text-xs text-slate-300">
+                    {{ $t("footer.stats.uptime") }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -952,12 +957,11 @@
           <div class="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-slate-600/50">
             <div class="text-center">
               <p class="text-xs lg:text-sm text-slate-300">
-                &copy; {{ new Date().getFullYear() }} HSRTopUp. All rights
-                reserved.
+                &copy; {{ new Date().getFullYear() }}
+                {{ $t("footer.copyright") }}
               </p>
               <p class="text-xs text-slate-400 mt-1">
-                Not affiliated with HoYoverse. All trademarks belong to their
-                respective owners.
+                {{ $t("footer.disclaimer") }}
               </p>
             </div>
           </div>
@@ -999,7 +1003,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import AuthModal from "~/components/AuthModal.vue";
 import LanguageCurrencyModal from "~/components/LanguageCurrencyModal.vue";
 import OrderListModal from "~/components/OrderListModal.vue";
@@ -1112,29 +1116,15 @@ const selectedServer = ref("America");
 const uid = ref("");
 
 // Language and Currency settings
-const currentLanguage = ref("en");
+const { locale, locales } = useI18n();
+const currentLanguage = computed(() => locale.value);
 const currentCurrency = ref("USD");
 
 // User authentication state
 const isLoggedIn = ref(false);
 const userName = ref("User");
-const userInitial = computed(() => userName.value.charAt(0).toUpperCase());
-const showUserMenu = ref(false);
 
-const faqs = ref([
-  {
-    q: "How to find my Honkai: Star Rail UID?",
-    a: "1. Login to the game. 2. Your UID will be displayed below your in-game avatar.",
-  },
-  {
-    q: "How long does it take to receive the items?",
-    a: "After the payment is complete, the items will be credited to your game account within minutes.",
-  },
-  {
-    q: "What payment methods are supported?",
-    a: "We support a wide range of payment methods including credit/debit cards, PayPal, and various local payment options.",
-  },
-]);
+// FAQs are now managed through i18n translations
 
 // Reviews data
 const reviews = ref([
@@ -1386,8 +1376,8 @@ const processOrder = (orderData) => {
   // Show success message or redirect to payment
 };
 
-const handleLanguageCurrencyChange = (settings) => {
-  currentLanguage.value = settings.language;
+const handleLanguageCurrencyChange = async (settings) => {
+  // Language is handled by the LanguageCurrencyModal component via setLocale
   currentCurrency.value = settings.currency;
   console.log("Language and currency updated:", settings);
   // Here you could save to localStorage or send to server
@@ -1396,12 +1386,16 @@ const handleLanguageCurrencyChange = (settings) => {
 };
 
 // Initialize language and currency from localStorage
-if (typeof window !== "undefined") {
+onMounted(() => {
   const savedLanguage = localStorage.getItem("preferredLanguage");
   const savedCurrency = localStorage.getItem("preferredCurrency");
-  if (savedLanguage) currentLanguage.value = savedLanguage;
-  if (savedCurrency) currentCurrency.value = savedCurrency;
-}
+  if (savedLanguage && locales.value.some((l) => l.code === savedLanguage)) {
+    locale.value = savedLanguage;
+  }
+  if (savedCurrency) {
+    currentCurrency.value = savedCurrency;
+  }
+});
 </script>
 
 <style>

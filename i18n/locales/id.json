@@ -1,0 +1,153 @@
+{
+  "header": {
+    "login": "Masuk",
+    "orders": "Pesanan"
+  },
+  "hero": {
+    "title": "Honkai: Star Rail",
+    "subtitle": "🎮 Top-Up Resmi Langsung | 🛡️ 100% Aman & Terpercaya",
+    "byHoyoverse": "Oleh HoYoverse",
+    "instantDelivery": "Pengiriman Instan",
+    "officialVerified": "Terverifikasi Resmi",
+    "verified": "Terverifikasi"
+  },
+  "banner": {
+    "bonus": "BONUS DIPERBARUI! 2X Oneiric Shards pada Top-Up V3.2 Pertama"
+  },
+  "products": {
+    "expressSupplyPass": "[V3.4 Terbatas] Express Supply Pass",
+    "oneiricShard6480": "[V3.4 Terbatas] 6480+1600",
+    "fireflyBundle": "Paket Jaminan Firefly|Jingliu|Blade",
+    "lightConesBundle": "Paket Light Cones 5 Bintang",
+    "springOutfit": "Paket Outfit Spring Missive",
+    "fateBundle": "[Fate Terbatas] Paket Jaminan Saber/Archer",
+    "fateLightCones": "[Fate Terbatas] Paket Light Cones 5 Bintang",
+    "allInOneBundle": "Paket All-In-One",
+    "oneiricShard3": "6480+1600 Oneiric Shard × 3",
+    "oneiricShard5": "6480+1600 Oneiric Shard × 5",
+    "oneiricShard10": "6480+1600 Oneiric Shard × 10",
+    "hertaTrailblazeAid": "Kontrak Herta: Bantuan Trailblaze",
+    "hertaFuelRefill": "Kontrak Herta: Pengisian Bahan Bakar",
+    "hertaQuestSharing": "Kontrak Herta: Berbagi Quest"
+  },
+  "topup": {
+    "title": "Top-Up",
+    "selectServer": "Pilih Server",
+    "enterUID": "Masukkan UID",
+    "selectProduct": "Pilih Produk",
+    "purchaseNow": "Beli Sekarang",
+    "uidPlaceholder": "Masukkan UID Anda di sini",
+    "serverList": {
+      "america": "Amerika",
+      "europe": "Eropa",
+      "asia": "Asia",
+      "twHkMo": "TW, HK, MO"
+    },
+    "errors": {
+      "selectServer": "Silakan pilih server",
+      "enterUID": "Silakan masukkan UID Anda",
+      "selectProduct": "Silakan pilih produk"
+    }
+  },
+  "content": {
+    "description": {
+      "title": "Deskripsi",
+      "content1": "Beli Top Up Honkai: Star Rail Murah - Cepat & Aman",
+      "content2": "Mudah dan cepat untuk top up akun Honkai: Star Rail Anda! Cukup masukkan UID Anda, pilih server, pilih nilai yang ingin dibeli, selesaikan pembayaran, dan Oneiric Shard atau Express Supply Pass akan ditambahkan ke akun Anda segera.",
+      "content3": "Bayar dengan mudah menggunakan PayPal, Razer Gold, atau metode pembayaran lokal pilihan Anda. Tidak perlu registrasi atau login, membuat pengalaman pembelian Anda semulus mungkin."
+    },
+    "faqs": {
+      "title": "FAQ",
+      "q1": "Bagaimana cara menemukan UID Honkai: Star Rail saya?",
+      "a1": "1. Login ke game. 2. UID Anda akan ditampilkan di bawah avatar dalam game.",
+      "q2": "Berapa lama waktu yang diperlukan untuk menerima item?",
+      "a2": "Setelah pembayaran selesai, item akan dikreditkan ke akun game Anda dalam hitungan menit.",
+      "q3": "Metode pembayaran apa yang didukung?",
+      "a3": "Kami mendukung berbagai metode pembayaran termasuk kartu kredit/debit, PayPal, dan berbagai opsi pembayaran lokal."
+    },
+    "reviews": {
+      "title": "Ulasan Pengguna",
+      "reviewsCount": "100rb+ ulasan",
+      "loadMore": "Muat Lebih Banyak Ulasan"
+    }
+  },
+  "footer": {
+    "description": "Mitra terpercaya Anda untuk top-up game instan. Layanan cepat, aman, dan andal untuk semua kebutuhan gaming Anda.",
+    "support": "Dukungan",
+    "legal": "Legal",
+    "supportLinks": {
+      "helpCenter": "Pusat Bantuan",
+      "contactUs": "Hubungi Kami",
+      "liveChat": "Live Chat",
+      "orderStatus": "Status Pesanan",
+      "refundPolicy": "Kebijakan Refund"
+    },
+    "legalLinks": {
+      "termsOfService": "Syarat Layanan",
+      "privacyPolicy": "Kebijakan Privasi",
+      "cookiePolicy": "Kebijakan Cookie",
+      "securityCenter": "Pusat Keamanan",
+      "trustSafety": "Kepercayaan & Keamanan"
+    },
+    "paymentMethods": "Metode Pembayaran Aman",
+    "stats": {
+      "happyCustomers": "Pelanggan Puas",
+      "support247": "Dukungan",
+      "uptime": "Uptime"
+    },
+    "copyright": "HSRTopUp. Semua hak dilindungi.",
+    "disclaimer": "Tidak berafiliasi dengan HoYoverse. Semua merek dagang adalah milik pemiliknya masing-masing."
+  },
+  "auth": {
+    "login": "Masuk",
+    "register": "Daftar",
+    "email": "Email",
+    "password": "Kata Sandi",
+    "confirmPassword": "Konfirmasi Kata Sandi",
+    "googleLogin": "Lanjutkan dengan Google",
+    "forgotPassword": "Lupa Kata Sandi?",
+    "noAccount": "Belum punya akun?",
+    "hasAccount": "Sudah punya akun?"
+  },
+  "order": {
+    "title": "Konfirmasi Pesanan",
+    "orderDetails": "Detail Pesanan",
+    "paymentMethod": "Metode Pembayaran",
+    "totalAmount": "Total Jumlah",
+    "confirm": "Konfirmasi Pesanan",
+    "cancel": "Batal",
+    "processing": "Memproses...",
+    "success": "Pesanan berhasil diselesaikan!",
+    "error": "Pesanan gagal. Silakan coba lagi."
+  },
+  "orderHistory": {
+    "title": "Riwayat Pesanan",
+    "orderNumber": "Nomor Pesanan",
+    "status": "Status",
+    "amount": "Jumlah",
+    "date": "Tanggal",
+    "noOrders": "Tidak ada pesanan ditemukan",
+    "viewDetails": "Lihat Detail",
+    "statuses": {
+      "completed": "Selesai",
+      "pending": "Menunggu",
+      "failed": "Gagal"
+    }
+  },
+  "languageCurrency": {
+    "title": "Bahasa & Mata Uang",
+    "language": "Bahasa",
+    "currency": "Mata Uang",
+    "save": "Simpan Perubahan",
+    "cancel": "Batal"
+  },
+  "common": {
+    "close": "Tutup",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "confirm": "Konfirmasi",
+    "loading": "Memuat...",
+    "error": "Error",
+    "success": "Berhasil"
+  }
+}
