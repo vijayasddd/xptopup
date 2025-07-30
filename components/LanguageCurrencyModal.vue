@@ -1,92 +1,64 @@
 <template>
-  <BaseModal
-    :show="show"
-    :title="$t('languageCurrency.title')"
-    size="sm"
-    @close="$emit('close')"
-  >
-    <div class="space-y-6">
-      <!-- Language Selection -->
-      <div>
-        <label
-          class="block text-sm font-medium text-slate-200 mb-2 drop-shadow-md"
-        >
-          <Icon
-            name="heroicons:language"
-            class="h-4 w-4 inline mr-2 text-amber-400"
-          />
-          {{ $t("languageCurrency.language") }}
-        </label>
-        <select
-          v-model="selectedLanguage"
-          class="w-full bg-slate-700/60 backdrop-blur-sm border border-slate-600/50 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400/50 transition-all duration-300 text-white shadow-lg hover:border-blue-400/50"
-        >
-          <option
-            v-for="locale in availableLocales"
-            :key="locale.code"
-            :value="locale.code"
-            class="bg-slate-700 text-white"
-          >
-            {{ locale.flag }} {{ locale.name }}
-          </option>
-        </select>
-      </div>
+  <BaseModal :show="show" @close="$emit('close')">
+    <template #header>
+      <h2 class="text-xl font-bold text-white drop-shadow-lg">
+        {{ $t("languageCurrencyModal.title") }}
+      </h2>
+    </template>
+    <template #body>
+      <div class="space-y-6">
+        <!-- Language Selection -->
+        <div>
+          <h3 class="font-semibold text-slate-200 mb-3">
+            {{ $t("languageCurrencyModal.language") }}
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <button
+              v-for="lang in availableLanguages"
+              :key="lang.code"
+              :class="[
+                'p-3 rounded-lg transition-all duration-200 border-2',
+                selectedLanguage === lang.code
+                  ? 'bg-amber-400/90 text-slate-900 border-amber-400/90 font-bold shadow-lg shadow-amber-500/30'
+                  : 'bg-slate-700/50 border-slate-600/50 hover:bg-slate-600/50 hover:border-slate-500/50',
+              ]"
+              @click="setLanguage(lang.code)"
+            >
+              {{ lang.name }}
+            </button>
+          </div>
+        </div>
 
-      <!-- Currency Selection -->
-      <div>
-        <label
-          class="block text-sm font-medium text-slate-200 mb-2 drop-shadow-md"
-        >
-          <Icon
-            name="heroicons:currency-dollar"
-            class="h-4 w-4 inline mr-2 text-amber-400"
-          />
-          {{ $t("languageCurrency.currency") }}
-        </label>
-        <select
-          v-model="selectedCurrency"
-          class="w-full bg-slate-700/60 backdrop-blur-sm border border-slate-600/50 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400/50 transition-all duration-300 text-white shadow-lg hover:border-blue-400/50"
-        >
-          <option
-            v-for="currency in currencies"
-            :key="currency.code"
-            :value="currency.code"
-            class="bg-slate-700 text-white"
-          >
-            {{ currency.name }} ({{ currency.symbol }})
-          </option>
-        </select>
-      </div>
-
-      <!-- Preview Section -->
-      <div
-        class="bg-gradient-to-br from-slate-700/60 via-indigo-900/30 to-purple-900/30 backdrop-blur-sm rounded-lg p-4 border border-amber-400/30 shadow-lg"
-      >
-        <h4 class="text-sm font-medium text-slate-200 mb-2 drop-shadow-md">
-          Preview
-        </h4>
-        <div class="flex items-center justify-between">
-          <span class="text-white drop-shadow-md">Selected Settings:</span>
-          <span class="text-amber-400 font-medium drop-shadow-lg">
-            {{ getLanguageName(selectedLanguage) }} / {{ selectedCurrency }}
-          </span>
+        <!-- Currency Selection -->
+        <div>
+          <h3 class="font-semibold text-slate-200 mb-3">
+            {{ $t("languageCurrencyModal.currency") }}
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <button
+              v-for="currency in currencies"
+              :key="currency.name"
+              :class="[
+                'p-3 rounded-lg transition-all duration-200 border-2',
+                selectedCurrency === currency.name
+                  ? 'bg-amber-400/90 text-slate-900 border-amber-400/90 font-bold shadow-lg shadow-amber-500/30'
+                  : 'bg-slate-700/50 border-slate-600/50 hover:bg-slate-600/50 hover:border-slate-500/50',
+              ]"
+              @click="selectedCurrency = currency.name"
+            >
+              {{ currency.name }}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-
+    </template>
     <template #footer>
-      <div class="flex lg:mt-6 mt-4 justify-end space-x-3">
+      <div class="flex justify-end">
         <button
-          class="px-4 py-2 text-slate-300 hover:text-amber-300 transition-colors duration-300"
-          @click="$emit('close')"
-        >
-          {{ $t("languageCurrency.cancel") }}
-        </button>
-        <button
-          class="px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white rounded-lg font-medium transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 border border-amber-400/30"
+          class="px-6 py-2 text-sm font-bold text-slate-900 bg-gradient-to-r from-amber-400 to-orange-500 hover:scale-105 rounded-lg transition-transform"
           @click="applyChanges"
         >
-          {{ $t("languageCurrency.save") }}
+          {{ $t("languageCurrencyModal.apply") }}
         </button>
       </div>
     </template>
@@ -94,78 +66,44 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { useApi } from "~/composables/useApi";
 import BaseModal from "./BaseModal.vue";
 
 const props = defineProps({
-  show: {
-    type: Boolean,
-    default: false,
-  },
-  initialLanguage: {
-    type: String,
-    default: "en",
-  },
-  initialCurrency: {
-    type: String,
-    default: "USD",
-  },
+  show: Boolean,
+  initialLanguage: String,
+  initialCurrency: String,
 });
 
 const emit = defineEmits(["close", "change"]);
 
-const { locales } = useI18n();
+const { locale, t } = useI18n();
+const setLocale = useI18n().setLocale;
 
 const selectedLanguage = ref(props.initialLanguage);
 const selectedCurrency = ref(props.initialCurrency);
+const currencies = ref([]);
 
-const availableLocales = computed(() => locales.value);
+const availableLanguages = [
+  { code: "en", name: "English" },
+  { code: "zh-CN", name: "简体中文" },
+  { code: "zh-TW", name: "繁體中文" },
+  { code: "ja", name: "日本語" },
+  { code: "ko", name: "한국어" },
+  { code: "id", name: "Bahasa Indonesia" },
+];
 
-const currencies = ref([
-  { code: "USD", symbol: "$", name: "US Dollar" },
-  { code: "EUR", symbol: "€", name: "Euro" },
-  { code: "GBP", symbol: "£", name: "British Pound" },
-  { code: "JPY", symbol: "¥", name: "Japanese Yen" },
-  { code: "CNY", symbol: "¥", name: "Chinese Yuan" },
-  { code: "KRW", symbol: "₩", name: "Korean Won" },
-  { code: "TWD", symbol: "NT$", name: "Taiwan Dollar" },
-  { code: "IDR", symbol: "Rp", name: "Indonesian Rupiah" },
-  { code: "CAD", symbol: "C$", name: "Canadian Dollar" },
-  { code: "AUD", symbol: "A$", name: "Australian Dollar" },
-  { code: "CHF", symbol: "CHF", name: "Swiss Franc" },
-  { code: "SEK", symbol: "kr", name: "Swedish Krona" },
-  { code: "SGD", symbol: "S$", name: "Singapore Dollar" },
-  { code: "HKD", symbol: "HK$", name: "Hong Kong Dollar" },
-]);
+const { data: currencyData } = useApi("/app/channel/getCurrency");
+currencies.value = currencyData.value?.data || [];
 
-const getLanguageName = (code) => {
-  const locale = availableLocales.value.find((l) => l.code === code);
-  return locale ? `${locale.flag} ${locale.name}` : code.toUpperCase();
+const setLanguage = (langCode) => {
+  selectedLanguage.value = langCode;
 };
 
-const applyChanges = async () => {
-  // 构建目标路径
-  const currentPath = useRoute().path;
-  let targetPath = currentPath;
-
-  // 如果选择的是英语，跳转到根路径（去掉语言前缀）
-  if (selectedLanguage.value === "en") {
-    // 移除当前路径中的语言前缀（如果有）
-    const pathWithoutLocale =
-      currentPath.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, "") || "/";
-    targetPath = pathWithoutLocale;
-  } else {
-    // 如果选择的是其他语言，添加语言前缀
-    const pathWithoutLocale =
-      currentPath.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, "") || "/";
-    targetPath = `/${selectedLanguage.value}${
-      pathWithoutLocale === "/" ? "" : pathWithoutLocale
-    }`;
-  }
-
-  // 跳转到目标路径
-  await navigateTo(targetPath, { external: true });
-
+const applyChanges = () => {
+  setLocale(selectedLanguage.value);
   emit("change", {
     language: selectedLanguage.value,
     currency: selectedCurrency.value,
@@ -173,14 +111,8 @@ const applyChanges = async () => {
   emit("close");
 };
 
-// 当弹窗显示时重置选择
-watch(
-  () => props.show,
-  (newVal) => {
-    if (newVal) {
-      selectedLanguage.value = props.initialLanguage;
-      selectedCurrency.value = props.initialCurrency;
-    }
-  }
-);
+onMounted(() => {
+  selectedLanguage.value = props.initialLanguage;
+  selectedCurrency.value = props.initialCurrency;
+});
 </script>

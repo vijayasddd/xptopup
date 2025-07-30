@@ -1,109 +1,104 @@
 <template>
-  <BaseModal
-    :show="show"
-    title="Confirm Order"
-    size="md"
-    @close="$emit('close')"
-  >
-    <div class="space-y-4">
-      <div
-        class="bg-gradient-to-br from-slate-700/60 via-indigo-900/30 to-purple-900/30 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 shadow-lg"
-      >
-        <h3 class="font-semibold text-white mb-3 drop-shadow-lg">
-          Order Details
-        </h3>
-        <div class="space-y-2 text-sm">
+  <BaseModal :show="show" @close="closeModal">
+    <template #header>
+      <h2 class="text-xl font-bold text-white drop-shadow-lg">
+        {{ $t("orderModal.title") }}
+      </h2>
+    </template>
+    <template #body>
+      <div v-if="selectedProduct" class="space-y-4">
+        <!-- Order Summary -->
+        <div class="bg-slate-700/50 rounded-lg p-4 border border-slate-600/50">
+          <div class="flex items-center space-x-4">
+            <img
+              :src="selectedProduct.image"
+              alt=""
+              class="w-20 h-20 rounded-md object-cover bg-slate-800"
+            />
+            <div class="flex-1">
+              <h3 class="font-semibold text-white">
+                {{ selectedProduct.name }}
+              </h3>
+              <p class="text-amber-400 font-bold text-lg mt-1">
+                ${{ selectedProduct.price }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Info -->
+        <div class="text-sm space-y-2">
           <div class="flex justify-between">
-            <span class="text-slate-200">Game:</span>
-            <span class="text-white drop-shadow-md">Honkai: Star Rail</span>
+            <span class="text-slate-300">{{ $t("orderModal.server") }}:</span>
+            <span class="text-white font-medium">{{ selectedServer }}</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-slate-200">Server:</span>
-            <span class="text-white drop-shadow-md">{{ selectedServer }}</span>
+            <span class="text-slate-300">{{ $t("orderModal.uid") }}:</span>
+            <span class="text-white font-medium">{{ uid }}</span>
           </div>
-          <div class="flex justify-between">
-            <span class="text-slate-200">UID:</span>
-            <span class="text-white drop-shadow-md">{{ uid }}</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="text-slate-200">Product:</span>
-            <span class="text-white drop-shadow-md">{{
-              selectedProduct?.name
-            }}</span>
-          </div>
-          <div class="flex justify-between font-semibold">
-            <span class="text-slate-200">Total:</span>
-            <span class="text-amber-400 drop-shadow-lg"
-              >${{ selectedProduct?.price }}</span
+        </div>
+
+        <!-- Email and Verification -->
+        <div class="space-y-3">
+          <div>
+            <label
+              for="email"
+              class="text-sm font-medium text-slate-200 mb-1 block"
+              >{{ $t("orderModal.email") }}</label
             >
+            <input
+              id="email"
+              v-model="email"
+              type="email"
+              class="w-full bg-slate-700/50 border-2 border-slate-600/50 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-colors"
+              :placeholder="$t('orderModal.emailPlaceholder')"
+            />
+          </div>
+          <div v-if="needVerifyEmail">
+            <label
+              for="verifyCode"
+              class="text-sm font-medium text-slate-200 mb-1 block"
+              >{{ $t("orderModal.verificationCode") }}</label
+            >
+            <div class="flex space-x-2">
+              <input
+                id="verifyCode"
+                v-model="emailVerifyCode"
+                type="text"
+                class="flex-grow bg-slate-700/50 border-2 border-slate-600/50 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-colors"
+                :placeholder="$t('orderModal.codePlaceholder')"
+              />
+              <button
+                class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-colors"
+                @click="sendVerificationCode"
+              >
+                {{ $t("orderModal.sendCode") }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
-      <div
-        class="bg-gradient-to-br from-slate-700/60 via-indigo-900/30 to-purple-900/30 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 shadow-lg"
-      >
-        <h3 class="font-semibold text-white mb-3 drop-shadow-lg">
-          Payment Method
-        </h3>
-        <div class="space-y-2">
-          <label
-            class="flex items-center space-x-3 cursor-pointer p-2 rounded-lg hover:bg-slate-600/20 transition-all duration-300"
-          >
-            <input
-              v-model="selectedPayment"
-              type="radio"
-              name="payment"
-              value="paypal"
-              class="text-amber-500 focus:ring-amber-400"
-            />
-            <Icon name="logos:paypal" class="h-6 w-6" />
-            <span class="text-white drop-shadow-md">PayPal</span>
-          </label>
-          <label
-            class="flex items-center space-x-3 cursor-pointer p-2 rounded-lg hover:bg-slate-600/20 transition-all duration-300"
-          >
-            <input
-              v-model="selectedPayment"
-              type="radio"
-              name="payment"
-              value="card"
-              class="text-amber-500 focus:ring-amber-400"
-            />
-            <Icon name="heroicons:credit-card" class="h-6 w-6 text-slate-300" />
-            <span class="text-white drop-shadow-md">Credit/Debit Card</span>
-          </label>
-          <label
-            class="flex items-center space-x-3 cursor-pointer p-2 rounded-lg hover:bg-slate-600/20 transition-all duration-300"
-          >
-            <input
-              v-model="selectedPayment"
-              type="radio"
-              name="payment"
-              value="razer"
-              class="text-amber-500 focus:ring-amber-400"
-            />
-            <Icon name="heroicons:banknotes" class="h-6 w-6 text-slate-300" />
-            <span class="text-white drop-shadow-md">Razer Gold</span>
-          </label>
-        </div>
+      <div v-else class="text-center text-slate-400 py-8">
+        <p>{{ $t("orderModal.noProductSelected") }}</p>
       </div>
-    </div>
-
+    </template>
     <template #footer>
-      <div class="flex space-x-3">
+      <div class="flex justify-end space-x-3">
         <button
-          class="flex-1 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 text-white font-medium py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm border border-slate-500/30"
-          @click="$emit('close')"
+          class="px-5 py-2 text-sm font-medium text-slate-300 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors"
+          @click="closeModal"
         >
-          Cancel
+          {{ $t("orderModal.cancel") }}
         </button>
         <button
-          :disabled="!selectedPayment"
-          class="flex-1 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 disabled:from-slate-600 disabled:to-slate-700 disabled:cursor-not-allowed text-white font-bold py-3 rounded-lg transition-all duration-300 shadow-xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 border border-amber-400/30"
-          @click="handleProcessOrder"
+          class="px-5 py-2 text-sm font-bold text-slate-900 bg-gradient-to-r from-amber-400 to-orange-500 hover:scale-105 rounded-lg transition-transform"
+          :disabled="loading"
+          @click="processOrder"
         >
-          Proceed to Payment
+          <span v-if="!loading">{{ $t("orderModal.processOrder") }}</span>
+          <span v-else>
+            <Icon name="heroicons:arrow-path" class="animate-spin h-5 w-5" />
+          </span>
         </button>
       </div>
     </template>
@@ -111,38 +106,82 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useApi } from "~/composables/useApi";
 import BaseModal from "./BaseModal.vue";
 
 const props = defineProps({
-  show: {
-    type: Boolean,
-    default: false,
-  },
-  selectedServer: {
-    type: String,
-    default: "",
-  },
-  uid: {
-    type: String,
-    default: "",
-  },
-  selectedProduct: {
-    type: Object,
-    default: null,
-  },
+  show: Boolean,
+  selectedServer: String,
+  uid: String,
+  selectedProduct: Object,
 });
 
-const emit = defineEmits(["close", "processOrder"]);
+const emit = defineEmits(["close", "process-order"]);
 
-const selectedPayment = ref("");
+const email = ref("");
+const emailVerifyCode = ref("");
+const needVerifyEmail = ref(false);
+const loading = ref(false);
 
-const handleProcessOrder = () => {
-  emit("processOrder", {
-    server: props.selectedServer,
-    uid: props.uid,
-    product: props.selectedProduct,
-    payment: selectedPayment.value,
+const closeModal = () => {
+  if (loading.value) return;
+  emit("close");
+};
+
+watch(
+  () => props.show,
+  (newVal) => {
+    if (!newVal) {
+      email.value = "";
+      emailVerifyCode.value = "";
+      needVerifyEmail.value = false;
+      loading.value = false;
+    }
+  }
+);
+
+const sendVerificationCode = async () => {
+  if (!email.value) return;
+  // Logic to send verification code
+  await useApi("/app/sso/verifyEmail", {
+    method: "POST",
+    body: { email: email.value },
   });
+  needVerifyEmail.value = true; // Assume verification is now needed
+};
+
+const processOrder = async () => {
+  if (!props.selectedProduct || !email.value) return;
+
+  loading.value = true;
+  try {
+    const { data, error } = await useApi("/app/order/createAndRegister", {
+      method: "POST",
+      body: {
+        goodsId: props.selectedProduct.id,
+        quantity: 1,
+        email: email.value,
+        emailVerifyCode: emailVerifyCode.value,
+      },
+    });
+
+    if (error.value || data.value?.code !== 200) {
+      console.error(
+        "Order creation failed:",
+        error.value || data.value.message
+      );
+      if (data.value?.data?.needVerifyEmail) {
+        needVerifyEmail.value = true;
+      }
+      return;
+    }
+
+    emit("process-order", data.value.data);
+  } catch (err) {
+    console.error("An unexpected error occurred:", err);
+  } finally {
+    loading.value = false;
+  }
 };
 </script>
