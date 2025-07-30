@@ -3,18 +3,12 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-05-15",
   devtools: { enabled: false },
   modules: [
+    "@nuxt/eslint",
+    "@nuxt/image",
     "@nuxtjs/tailwindcss",
-    "@pinia/nuxt",
-    "@nuxtjs/i18n",
-    "nuxt-icon",
     "@nuxt/icon",
+    "@nuxtjs/i18n",
   ],
-
-  runtimeConfig: {
-    public: {
-      apiBase: "https://api.bittopup.com/naicha",
-    },
-  },
 
   i18n: {
     baseUrl: "/",
