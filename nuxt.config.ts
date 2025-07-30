@@ -11,10 +11,13 @@ export default defineNuxtConfig({
   ],
 
   i18n: {
-    defaultLocale: "en",
-    strategy: "prefix_except_default",
-    langDir: "locales",
+    baseUrl: "/",
+    vueI18n: "./i18n.config.ts",
+    // @ts-expect-error nuxt-i18n 类型定义错误
     lazy: true,
+    defaultLocale: "en",
+    langDir: "locales",
+    detectBrowserLanguage: false,
     locales: [
       {
         code: "en",
@@ -32,7 +35,7 @@ export default defineNuxtConfig({
         code: "zh-TW",
         name: "繁體中文",
         file: "zh-TW.json",
-        flag: "🇹🇼",
+        flag: "x",
       },
       {
         code: "id",
@@ -53,6 +56,5 @@ export default defineNuxtConfig({
         flag: "🇰🇷",
       },
     ],
-    vueI18n: "./i18n.config.ts",
   },
 });

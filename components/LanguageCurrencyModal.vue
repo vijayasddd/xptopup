@@ -114,7 +114,7 @@ const props = defineProps({
 
 const emit = defineEmits(["close", "change"]);
 
-const { locales, locale, setLocale } = useI18n();
+const { locales } = useI18n();
 
 const selectedLanguage = ref(props.initialLanguage);
 const selectedCurrency = ref(props.initialCurrency);
@@ -144,8 +144,27 @@ const getLanguageName = (code) => {
 };
 
 const applyChanges = async () => {
-  // Update locale
-  await setLocale(selectedLanguage.value);
+  // 构建目标路径
+  const currentPath = useRoute().path;
+  let targetPath = currentPath;
+
+  // 如果选择的是英语，跳转到根路径（去掉语言前缀）
+  if (selectedLanguage.value === "en") {
+    // 移除当前路径中的语言前缀（如果有）
+    const pathWithoutLocale =
+      currentPath.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, "") || "/";
+    targetPath = pathWithoutLocale;
+  } else {
+    // 如果选择的是其他语言，添加语言前缀
+    const pathWithoutLocale =
+      currentPath.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, "") || "/";
+    targetPath = `/${selectedLanguage.value}${
+      pathWithoutLocale === "/" ? "" : pathWithoutLocale
+    }`;
+  }
+
+  // 跳转到目标路径
+  await navigateTo(targetPath, { external: true });
 
   emit("change", {
     language: selectedLanguage.value,
